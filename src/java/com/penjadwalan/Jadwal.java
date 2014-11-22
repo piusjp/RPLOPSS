@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -65,7 +66,7 @@ public class Jadwal {
 
     public List<Jadwal> tampilJadwal(String bulan, String thn) throws SQLException {
         PreparedStatement statement = null;
-        ResultSet result = null;       
+        ResultSet result = null;
         statement = conn.prepareStatement("select * from jadwal where tgl_pertandingan between '01-" + bulan + "-" + thn + "' and '31-" + bulan + "-" + thn + "'");
         result = statement.executeQuery();
         List<Jadwal> kategoris = new ArrayList<Jadwal>();
@@ -98,6 +99,36 @@ public class Jadwal {
         this.status_main = status_main;
     }
 
+    public void UpdateBelum() throws SQLException {
+        try {
+            conn.setAutoCommit(false);
+            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String query = "update jadwal set status_main='belum' where TO_DATE(SYSDATE, 'dd-mm-yyyy')<=TO_DATE(tgl_pertandingan, 'dd-mm-yyyy')";
+            stmt.executeQuery(query);
+            conn.commit();
+            System.out.println("Tambah Data Jadwal Berhasil");
+        } catch (SQLException exception) {
+            conn.rollback();
+            System.out.println("Tambah Data Jadwal Pertandingan gagal = " + exception.getMessage());
+            throw exception;
+        }
+    }
+
+    public void UpdateSudah() throws SQLException {
+        try {
+            conn.setAutoCommit(false);
+            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String query = "update jadwal set status_main='sudah' where TO_DATE(SYSDATE, 'dd-mm-yyyy')>TO_DATE(tgl_pertandingan, 'dd-mm-yyyy')";
+            stmt.executeQuery(query);
+            conn.commit();
+            System.out.println("Tambah Data Jadwal Berhasil");
+        } catch (SQLException exception) {
+            conn.rollback();
+            System.out.println("Tambah Data Jadwal Pertandingan gagal = " + exception.getMessage());
+            throw exception;
+        }
+    }
+
     public void buatJadwal(Jadwal dataJadwal) throws SQLException {
         PreparedStatement pstmt = null;
         try {
@@ -112,6 +143,8 @@ public class Jadwal {
             pstmt.setString(4, dataJadwal.getUrl());
             pstmt.setString(5, dataJadwal.getStatus_main());
             pstmt.executeUpdate();
+            UpdateBelum();
+            UpdateSudah();
             conn.commit();
             System.out.println("Tambah Data Jadwal Berhasil");
         } catch (SQLException exception) {

@@ -19,7 +19,7 @@ public class testpius {
         j.setLawan("PERSEBAYA SURABAYA");
         j.setJam("16.40");
         j.setStatus_main("belum");
-        j.setTgl(java.sql.Date.valueOf("2014-12-13"));
+        j.setTgl(java.sql.Date.valueOf("2014-10-10"));
         j.setUrl("img/persebaya.png");
 j.buatJadwal(j);
     } 
