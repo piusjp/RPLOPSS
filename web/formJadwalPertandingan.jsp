@@ -188,14 +188,14 @@
                     </tr>
                     <%
                         Jadwal j = new Jadwal();
-                        for(int i=0;i<2;i++){
+                        for (int i = 0; i < 2; i++) {
                     %>
                     <tr bgcolor="#FFEBCD">
-                        <td><% out.print(String.valueOf(j.tampilJadwal().get(i).getTgl()).substring(0, 10)); %></td>
-                        <td><% out.print(j.tampilJadwal().get(i).getJam()); %></td>
-                        <td>PSS</td>
-                        <td>VS</td>
-                        <td><% out.print(j.tampilJadwal().get(i).getLawan());%></td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(j.tampilJadwal().get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(j.tampilJadwal().get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(j.tampilJadwal().get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
                     </tr>
                     <% }%>
                 </table>
