@@ -61,6 +61,13 @@ public class Jadwal {
         this.jam = jam;
     }
 
+    public List<Jadwal> tampilJadwal(String bulan, String thn) {
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        String sql = "select * from jadwal where tgl_pertandingan between '01-"+bulan+"-"+thn+"' and '31-"+bulan+"-"+thn+"'";
+        return null;
+    }
+
     public Jadwal lihatNamaLogo() throws SQLException {
         PreparedStatement statement = null;
         ResultSet result = null;
