@@ -4,6 +4,8 @@
     Author     : Yosua Astutakari
 --%>
 
+
+<%@page import="java.util.List"%>
 <%@page import="com.penjadwalan.Jadwal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -139,6 +141,7 @@
             <img src="img/Logo_PSS.png" width="150px"height="150px">
             <div class="dalam"> <h1 align="center">Jadwal Pertandingan PSS Sleman</h1></div>
         </div>
+        <form>
         <div class="frame">
             <div>
                 <p></p>
@@ -173,7 +176,7 @@
                                 <option value="19">2019</option>
                             </select> 
                         </td>
-                        <td><input type="submit" value="Lihat"></td>
+                        <td><input  name="lihat"type="submit" value="Lihat"></td>
                     </tr>
                 </table>
             </div>
@@ -186,21 +189,35 @@
                         <td>Vs</td>
                         <td>Away</td>
                     </tr>
-                    <%
-                        Jadwal j = new Jadwal();
-                        for (int i = 0; i < 3; i++) {
+                    <%if (request.getParameterNames().equals("lihat")) {
+                            Jadwal j = new Jadwal();
+                        List<Jadwal> k= j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
+                        for (int i = 0; i < k.size(); i++) {
                     %>
                     <tr bgcolor="#FFEBCD">
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(j.tampilJadwal().get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(j.tampilJadwal().get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
                         <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
                         <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(j.tampilJadwal().get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
                     </tr>
-                    <% }%>
+                      
+                        
+                    <% }}else{  Jadwal j = new Jadwal();
+                    List<Jadwal> jad=j.tampilJadwal();
+                    for (int i = 0; i < jad.size(); i++) {%>
+                   <tr bgcolor="#FFEBCD">
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    </tr>
+                    <%}}%>
                 </table>
             </div>
         </div>
+        </form>
 
     </body>
 
