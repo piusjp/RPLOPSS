@@ -7,8 +7,6 @@ package com.Test;
 
 import com.penjadwalan.Jadwal;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
