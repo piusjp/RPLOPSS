@@ -71,6 +71,8 @@ public class Jadwal {
         while (result.next()) {
             a.setLawan(result.getString("Lawan"));
             a.setUrl(result.getString("urllogo"));
+            a.setTgl(result.getDate("TGL_PERTANDINGAN"));
+            a.setJam(result.getString("jam"));
             return a;
         }
         return a;

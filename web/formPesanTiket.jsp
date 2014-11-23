@@ -144,7 +144,7 @@
         <div class="leftSlide4">
             <div class="kiri" >
                 <div class="atas" align="center">
-                    PSS vs <%Jadwal j = new Jadwal();
+                    PSS SLEMAN vs <%Jadwal j = new Jadwal();
                         Jadwal k = new Jadwal();
                         k = j.lihatNamaLogo();
                         out.print(k.getLawan());
@@ -155,12 +155,19 @@
                         <tr>              
                             <th><img src="img/Logo_PSS.png" width="150px" height="150px"></th>
                             <td>VS</td>
-                            <td><img src="<%k.getUrl();%>" width="150px" height="150px"></td>
+                            <td><img src="<%out.print(k.getUrl());%>" width="150px" height="150px"></td>
                         <br>
                         </tr>                    
                     </table>
                     Stadion Maguwoharjo Depok Sleman Yogyakarta
-
+                    <p align="center">
+                        <% String date=String.valueOf(k.getTgl());
+                            out.print(date.substring(0, 10)+" pada pukul "+k.getJam());
+                            
+                            %>
+     
+                    </p>
+                   
                 </div>
             </div>
             <div class="kanan">
@@ -237,3 +244,4 @@
 
     </body>
     <html>
+
