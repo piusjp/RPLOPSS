@@ -115,7 +115,7 @@ public class Jadwal {
         PreparedStatement statement = null;
         ResultSet result = null;
 
-        statement = conn.prepareStatement("select * from jadwal where status_main='belum'");
+        statement = conn.prepareStatement("select * from jadwal where status_main like 'belum'");
         result = statement.executeQuery();
         Jadwal a = new Jadwal();
         while (result.next()) {
