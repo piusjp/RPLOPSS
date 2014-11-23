@@ -61,6 +61,7 @@ public class Jadwal {
         this.jam = jam;
     }
 
+<<<<<<< HEAD
 
     public List<Jadwal> tampilJadwal(String bulan, String thn) {
         PreparedStatement statement = null;
@@ -111,6 +112,48 @@ public class Jadwal {
     }
     
 
+=======
+    public String getStatus_main() {
+        return status_main;
+    }
+
+    public void setStatus_main(String status_main) {
+        this.status_main = status_main;
+    }
+
+    public void buatJadwal(Jadwal dataJadwal) throws SQLException {
+        PreparedStatement pstmt = null;
+        try {
+            conn.setAutoCommit(false);
+            String sql = "insert into jadwal(tgl_pertandingan,lawan,jam"
+                    + ",urllogo,status_main)"
+                    + "values (?,?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setDate(1, dataJadwal.getTgl());
+            pstmt.setString(2, dataJadwal.getLawan());
+            pstmt.setString(3, dataJadwal.getJam());
+            pstmt.setString(4, dataJadwal.getUrl());
+            pstmt.setString(5, dataJadwal.getStatus_main());
+            pstmt.executeUpdate();
+            conn.commit();
+            System.out.println("Tambah Data Baliho Berhasil");
+        } catch (SQLException exception) {
+            conn.rollback();
+            System.out.println("Tambah Data Baliho gagal = " + exception.getMessage());
+            throw exception;
+        } finally {
+            try {
+                conn.setAutoCommit(true);
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException exception) {
+                throw exception;
+            }
+        }
+    }
+    
+>>>>>>> origin/master
     public Jadwal lihatNamaLogo() throws SQLException {
         PreparedStatement statement = null;
         ResultSet result = null;
