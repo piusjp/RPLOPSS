@@ -21,7 +21,6 @@ public class testpius {
         j.setStatus_main("belum");
         j.setTgl(java.sql.Date.valueOf("2014-12-13"));
         j.setUrl("img/persebaya.png");
-
-    }
- 
+j.buatJadwal(j);
+    } 
 }

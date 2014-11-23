@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +25,7 @@ public class Jadwal {
     private String lawan;
     private Date tgl;
     private String jam;
-    private String url,status_main;
+    private String url, status_main;
     private final Connection conn = Connections.getKoneksi();
 
     public Jadwal() {
@@ -61,14 +63,32 @@ public class Jadwal {
         this.jam = jam;
     }
 
-
-    public List<Jadwal> tampilJadwal(String bulan, String thn) {
+    public List<Jadwal> tampilJadwal(String bulan, String thn) throws SQLException {
         PreparedStatement statement = null;
-        ResultSet result = null;
-        String sql = "select * from jadwal where tgl_pertandingan between '01-"+bulan+"-"+thn+"' and '31-"+bulan+"-"+thn+"'";
+        ResultSet result = null;       
+        statement = conn.prepareStatement("select * from jadwal where tgl_pertandingan between '01-" + bulan + "-" + thn + "' and '31-" + bulan + "-" + thn + "'");
+        result = statement.executeQuery();
+        List<Jadwal> kategoris = new ArrayList<Jadwal>();
+        try {
+            while (result.next()) {
+                Jadwal s = new Jadwal();
+                s.setTgl(result.getDate("TGL_PERTANDINGAN"));
+                s.setLawan(result.getString("lawan"));
+                s.setJam(result.getString("JAM"));
+                kategoris.add(s);
+            }
+
+            conn.commit();
+            return kategoris;
+        } catch (SQLException exception) {
+            try {
+                throw exception;
+            } catch (SQLException ex) {
+                Logger.getLogger(Jadwal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return null;
     }
-
 
     public String getStatus_main() {
         return status_main;
@@ -109,9 +129,7 @@ public class Jadwal {
             }
         }
     }
-    
-   
-  
+
     public Jadwal lihatNamaLogo() throws SQLException {
         PreparedStatement statement = null;
         ResultSet result = null;
@@ -125,7 +143,7 @@ public class Jadwal {
             a.setTgl(result.getDate("TGL_PERTANDINGAN"));
             a.setJam(result.getString("jam"));
             return a;
-            
+
         }
         return a;
     }
