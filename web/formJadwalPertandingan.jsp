@@ -159,18 +159,18 @@
                                 <option value="SEP">September</option>
                                 <option value="OCT">Oktober</option>
                                 <option value="NOV">November</option>
-                                <option value="DES">Desember</option>
+                                <option value="DEC">Desember</option>
                             </select> 
                         </td>
                         <td>Tahun</td>
                         <td>
                             <select name="tahun">
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
-                                <option value="2019">2019</option>
+                                <option value="14">2014</option>
+                                <option value="15">2015</option>
+                                <option value="16">2016</option>
+                                <option value="17">2017</option>
+                                <option value="18">2018</option>
+                                <option value="19">2019</option>
                             </select> 
                         </td>
                         <td><input type="submit" value="Lihat"></td>
@@ -179,7 +179,7 @@
             </div>
             <div>
                 <table align="center" border="1">
-                    <tr bgcolor="#2CF936">
+                    <tr bgcolor="#2CF936" align="conter">
                         <td>Tanggal</td>
                         <td>Jam</td>
                         <td>Home</td>
@@ -188,7 +188,7 @@
                     </tr>
                     <%
                         Jadwal j = new Jadwal();
-                        for (int i = 0; i < 2; i++) {
+                        for (int i = 0; i < 3; i++) {
                     %>
                     <tr bgcolor="#FFEBCD">
                         <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(j.tampilJadwal().get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>

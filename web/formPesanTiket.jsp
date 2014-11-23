@@ -144,7 +144,7 @@
         <div class="leftSlide4">
             <div class="kiri" >
                 <div class="atas" align="center">
-                    PSS SLEMAN vs <%Jadwal j = new Jadwal();
+                    PSS SLEMAN vs&nbsp&nbsp&nbsp&nbsp<%Jadwal j = new Jadwal();
                         Jadwal k = new Jadwal();
                         k = j.lihatNamaLogo();
                         out.print(k.getLawan());
