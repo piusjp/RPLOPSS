@@ -124,6 +124,7 @@ public class Jadwal {
             a.setTgl(result.getDate("TGL_PERTANDINGAN"));
             a.setJam(result.getString("jam"));
             return a;
+            
         }
         return a;
     }
