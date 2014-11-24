@@ -18,17 +18,12 @@ import java.util.logging.Logger;
  */
 public class Test2 {
     public static void main(String[] args) {
-        try {
-            Pemesanan p=new Pemesanan();
-            p.setId_pemesanan(1234567890);
-            p.setJum_kursi(3);
-            p.setNama("marjo");
-            p.setTelp(789656576);
-            p.setTgl_pertandingan(Date.valueOf("2014-05-12"));
-            p.setTpe_kursi("VIP");
-            p.simpan(p);
-        } catch (SQLException ex) {
-            Logger.getLogger(Test2.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Pemesanan p=new Pemesanan();
+        p.setId_pemesanan(1234567890);
+        p.setJum_kursi(3);
+        p.setNama("marjo");
+        p.setTelp(789656576);
+        p.setTgl_pertandingan(Date.valueOf("2014-05-12"));
+        p.setTpe_kursi("VIP");
     }
 }

@@ -161,85 +161,90 @@
                     </table>
                     Stadion Maguwoharjo Depok Sleman Yogyakarta
                     <p align="center">
-                        <% String date=String.valueOf(k.getTgl());
-                            out.print(date.substring(0, 10)+" pada pukul "+k.getJam());
-                            
-                            %>
-     
+                        <% String date = String.valueOf(k.getTgl());
+                            out.print(date.substring(0, 10) + " pada pukul " + k.getJam());
+
+                        %>
+
                     </p>
-                   
+
                 </div>
             </div>
-            <div class="kanan">
-                <h1 align="center">Form Pemesanan Titet</h1>
-                <table>
-                    <tr>
-                        <td>
-                            ID KTP
-                        </td>
-                        <td>
-                            <input type="text" name="id_ktp" size="16">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nama
-                        </td>
-                        <td>
-                            <input type="text" name="nama" size="16">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nomor Telp
-                        </td>
-                        <td>
-                            <input type="text" name="No_Telp" size="16">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Tanggal Pertandingan
-                        </td>
-                        <td>
-                            <input type="date" name="No_Telp">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Tipe Kursi
-                        </td>
-                        <td>
-                            <select name="tipe_kursi">
-                                <option value="VVIP">VVIP</option>
-                                <option value="VIP">VIP</option>
-                                <option value="STANDARD">STANDARD</option>
-                            </select> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Block
-                        </td>
-                        <td>
-                            <select name="block">
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                            </select> 
-                        </td>
-                    </tr>
+            <form action='Pemesanan' method="post">
+                <div class="kanan">
+                    <h1 align="center">Form Pemesanan Titet</h1>
+                    <table>
+                        <tr>
+                            <td>
+                                ID KTP
+                            </td>
+                            <td>
+                                <input type="text" name="id_ktp" size="16">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Nama
+                            </td>
+                            <td>
+                                <input type="text" name="nama" size="16">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Nomor Telp
+                            </td>
+                            <td>
+                                <input type="text" name="No_Telp" size="16">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tanggal Pertandingan
+                            </td>
+                            <td>
+                                <input type="date" name="tgl_pertandingan">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tipe Kursi
+                            </td>
+                            <td>
+                                <select name="tipe_kursi">
+                                    <option value="VVIP">VVIP</option>
+                                    <option value="VIP">VIP</option>
+                                    <option value="STANDARD">STANDARD</option>
+                                </select> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Block
+                            </td>
+                            <td>
+                                <select name="block">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                </select> 
+                            </td>
+                        </tr>
 
-
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" value="Pesan">
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                        <tr>
+                            <td>Jumlah Kursi</td>
+                            <td><input name="jumlah" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="Pesan">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
         </div>
 
     </body>

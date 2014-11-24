@@ -176,7 +176,7 @@
                                 <option value="19">2019</option>
                             </select> 
                         </td>
-                        <td><input  name="lihat"type="submit" value="Lihat"></td>
+                        <td><input  name="lihat" type="submit" value="Lihat"></td>
                     </tr>
                 </table>
             </div>
@@ -189,7 +189,7 @@
                         <td>Vs</td>
                         <td>Away</td>
                     </tr>
-                    <%if (request.getParameterNames().equals("lihat")) {
+                    <%if (request.getAttributeNames().equals("lihat")) {
                             Jadwal j = new Jadwal();
                         List<Jadwal> k= j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
                         for (int i = 0; i < k.size(); i++) {
