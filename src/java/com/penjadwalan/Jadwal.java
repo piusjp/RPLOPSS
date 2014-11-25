@@ -162,6 +162,35 @@ public class Jadwal {
             }
         }
     }
+    public void updateJadwal(Jadwal dataJadwal,String tgl) throws SQLException {
+        PreparedStatement pstmt = null;
+        try {
+            conn.setAutoCommit(false);
+            String sql = "update jadwal set tgl_pertandingan=?, lawan=?, jam=? where tgl_pertandingan = to_date('"+tgl+"','dd-mm-yyyy')";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setDate(1, dataJadwal.getTgl());
+            pstmt.setString(2, dataJadwal.getLawan());
+            pstmt.setString(3, dataJadwal.getJam());
+            pstmt.executeUpdate();
+            UpdateBelum();
+            UpdateSudah();
+            conn.commit();
+            System.out.println("Tambah Data Jadwal Berhasil");
+        } catch (SQLException exception) {
+            conn.rollback();
+            System.out.println("Tambah Data Jadwal Pertandingan gagal = " + exception.getMessage());
+            throw exception;
+        } finally {
+            try {
+                conn.setAutoCommit(true);
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException exception) {
+                throw exception;
+            }
+        }
+    }
 
     public Jadwal lihatNamaLogo() throws SQLException {
         PreparedStatement statement = null;
