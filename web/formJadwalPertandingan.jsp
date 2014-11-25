@@ -7,6 +7,7 @@
 
 <%@page import="java.util.List"%>
 <%@page import="com.penjadwalan.Jadwal"%>
+<a href="formJadwalPertandingan.jsp"></a>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

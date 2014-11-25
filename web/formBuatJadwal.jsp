@@ -113,9 +113,9 @@
         <div id='cssmenu'>
             <ul>
                 <li class='active'><a href='home.jsp'><span>Home</span></a></li>
-                <li><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
-                <li><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
-                <li class='last'><a href='#'><span>Jalur Terpendek</span></a></li>
+                <li><a href='formBuatJadwal.jsp'><span>Buat Jadwal Pertandingan</span></a></li>
+                <li><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
+                <li class='last'><a href='#'><span>Laporan Satu Musim</span></a></li>
             </ul>
         </div>
         <div class="leftSlide" align="justify">
@@ -124,7 +124,7 @@
             </div>
             <div class="leftSlide1">
                 <span style="color: #ffffff;">
-                    Perserikatan Sepak bola Sleman (biasa disingkat: PSS) merupakan sebuah tim sepak bola yang berbasis di Kabupaten Sleman, Daerah Istimewa Yogyakarta, Indonesia. Tim yang didirikan pada 20 Mei 1976 ini merupakan salah satu tim sepak bola yang disegani di Indonesia dan memiliki julukan sebagai tim Super Elang Jawa atau Super Elja. Tim ini juga sering disebut dengan julukan Laskar Sembada. Mereka bermain di Divisi Utama dalam sebuah kompetisi sepak bola Indonesia, Liga Indonesia. Prestasi tertingginya dalam kompetisi kasta tertinggi Liga Indonesia adalah dua tahun berturut-turut menempati empat besar pada Divisi Utama Liga Indonesia 2003 dan Divisi Utama Liga Indonesia 2004. Stadion utama mereka adalah Stadion Maguwoharjo, dan menggunakan Stadion Tridadi sebagai stadion kedua. PSS juga memiliki supporter fanatik yakni Slemania dan Brigata Curva Sud (BCS X PSS 1976)
+                    <h1>Buat Jadwal Baru</h1>
                 </span>
 
             </div>
@@ -151,6 +151,29 @@
             <!-- End WOWSlider.com BODY section -->
 
         </div>
+        
+        <form>
+        <div class="frame">
+            <div>
+                <p></p>
+            </div>
+            <div>
+                <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
+                    <tr bgcolor="#2CF936" align="conter">
+                        <td>Tanggal</td>
+                        <td>Jam</td>
+                        <td>Home</td>
+                        <td>Vs</td>
+                        <td>Away</td>
+                    </tr>
+                    <tr bgcolor="#FFEBCD">
+                        </tr>
+                      
+                   <tr bgcolor="#FFEBCD"></tr>
+                </table>
+            </div>
+        </div>
+        </form>
     </body>
 
     </html>

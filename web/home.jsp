@@ -117,6 +117,7 @@
                 <li><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
                 <li><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
                 <li class='last'><a href='#'><span>Jalur Terpendek</span></a></li>
+                <li class='last'><a href='formLoginOp.jsp'><span>Login Operator</span></a></li>
             </ul>
         </div>
         <div class="leftSlide" align="justify">
