@@ -4,6 +4,8 @@
     Author     : Yosua Astutakari
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.penjadwalan.Jadwal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -243,9 +245,24 @@
                             </td>
                         </tr>
                     </table>
+                    <%                        String a = request.getParameter("id_ktp");
+                        String b = request.getParameter("nama");
+                        String c = request.getParameter("No_Telp");
+                        String d = request.getParameter("tgl_pertandingan");
+                        String e = request.getParameter("tipe_kursi");
+                        String f = request.getParameter("block");
+                        String g = request.getParameter("jumlah");
+
+                        if (a == null || b == null || c == null || d == null || e == null || f == null || g == null) {
+                    %>
+                    <h4 align="center" color="red">Semua Field Haruslah berisi </h4>
+                    <%
+                        } else {
+
+                        }
+                    %>
                 </div>
-                <%
-                %>
+
             </form>
         </div>
 
