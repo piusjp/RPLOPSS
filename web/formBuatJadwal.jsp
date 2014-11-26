@@ -1,11 +1,15 @@
 <%-- 
-    Document   : home
-    Created on : Nov 19, 2014, 4:25:47 AM
+    Document   : formJadwalPertandingan
+    Created on : Nov 19, 2014, 5:39:31 PM
     Author     : Yosua Astutakari
 --%>
 
+
+<%@page import="java.util.List"%>
+<%@page import="com.penjadwalan.Jadwal"%>
+<a href="formJadwalPertandingan.jsp"></a>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <style>
         #imag asd{
@@ -34,15 +38,13 @@
             height: 150px;
 
         }
-        .leftSlide {
+        .leftSlide5 {
             position: absolute;
-            top: 64px;
-            left:  0px;
-            width: 1365px;
-            height: 200px;
-            background-color: #555555;
-
-
+            top: 200px;
+            left:  215px;
+            width: 900px;
+            height: 400px;
+            background-color: #ffffff;
         }
         .leftSlide1 {
             position: absolute;
@@ -52,6 +54,32 @@
             height: 150px;
 
         }
+        .top{
+            position: absolute;
+            top: 100px;
+            left:  100px;
+            width: 1100px;
+            height: 100px;
+            background-color: #ffffff;
+        }
+        .dalam{
+            position: absolute;
+            top: 0px;
+            left:  150px;
+            width: 950px;
+            height: 100px;
+            background-color:  #0f71ba;
+            font-family: sans-serif;
+        }
+        .frame{
+            position: absolute;
+            top: 250px;
+            left:  200px;
+            width: 800px;
+            height: 600px;
+            background-color: #ffffff;
+        }
+
         .captionOrange, .captionBlack
         {
             color: #fff;
@@ -89,7 +117,6 @@
         }
 
     </style>
-
     <head>
         <meta charset='utf-8'>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,62 +124,24 @@
         <link rel="stylesheet" href="css/styles.css">
         <script src="js/jquery-latest.min.js" type="text/javascript"></script>
         <script src="js/script.js"></script>
-        <title>PSS-Home</title>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="description" content="Made with WOW Slider - Create beautiful, responsive image sliders in a few clicks. Awesome skins and animations. Image carousel" />
-
-        <!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <!-- End WOWSlider.com HEAD section -->
+        <title>PSS-Jadwal Pertandingan</title>
 
     </head>
 
-    <body>
+    <body bgcolor="#555555">
 
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='home.jsp'><span>Home</span></a></li>
-                <li><a href='formBuatJadwal.jsp'><span>Buat Jadwal Pertandingan</span></a></li>
-                <li><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
-                <li class='last'><a href='#'><span>Laporan Satu Musim</span></a></li>
+                <li><a href='home.jsp'><span>Home</span></a></li>
+                <li class='active'><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
+                <li ><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
+                <li class='last'><a href='#'><span>Jalur Terpendek</span></a></li>
             </ul>
         </div>
-        <div class="leftSlide" align="justify">
-            <div class="left">
-                <img src="img/Logo_PSS.png" width="150px" height="150px">    
-            </div>
-            <div class="leftSlide1">
-                <span style="color: #ffffff;">
-                    <h1>Buat Jadwal Baru</h1>
-                </span>
-
-            </div>
+        <div class="top">
+            <img src="img/Logo_PSS.png" width="150px"height="150px">
+            <div class="dalam"> <h1 align="center">Jadwal Pertandingan PSS Sleman</h1></div>
         </div>
-        <div>
-            <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
-            <div id="wowslider-container1">
-                <div class="ws_images"><ul>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\p1.jpeg"><img src="data1/images/p1.jpg" alt="p1" title="p1" id="wows1_0"/></a></li>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\p2.jpeg"><img src="data1/images/p2.jpg" alt="p2" title="p2" id="wows1_1"/></a></li>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\p3.jpeg"><img src="data1/images/p3.jpg" alt="p3" title="p3" id="wows1_2"/></a></li>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\jpeg"><img src="data1/images/p4.jpg" alt="p4" title="p4" id="wows1_3"/></a></li>
-                    </ul></div>
-                <div class="ws_bullets"><div>
-                        <a href="#" title="p1"><img src="data1/tooltips/p1.jpg" alt="p1"/>1</a>
-                        <a href="#" title="p2"><img src="data1/tooltips/p2.jpg" alt="p2"/>2</a>
-                        <a href="#" title="p3"><img src="data1/tooltips/p3.jpg" alt="p3"/>3</a>
-                        <a href="#" title="p4"><img src="data1/tooltips/p4.jpg" alt="p4"/>4</a>
-                    </div></div><span class="wsl"><a href="http://wowslider.com/vu">image carousel</a> by WOWSlider.com v7.2</span>
-                <div class="ws_shadow"></div>
-            </div>	
-            <script type="text/javascript" src="engine1/wowslider.js"></script>
-            <script type="text/javascript" src="engine1/script.js"></script>
-            <!-- End WOWSlider.com BODY section -->
-
-        </div>
-        
-        <form>
         <div class="frame">
             <div>
                 <p></p>
@@ -166,14 +155,59 @@
                         <td>Vs</td>
                         <td>Away</td>
                     </tr>
+                    <%if (request.getAttributeNames().equals("lihat")) {
+                            Jadwal j = new Jadwal();
+                            List<Jadwal> k = j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
+                            for (int i = 0; i < k.size(); i++) {
+                    %>
                     <tr bgcolor="#FFEBCD">
-                        </tr>
-                      
-                   <tr bgcolor="#FFEBCD"></tr>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    </tr>
+
+
+                    <% }
+                    } else {
+                        Jadwal j = new Jadwal();
+                        List<Jadwal> jad = j.tampilJadwal();
+                        for (int i = 0; i < jad.size(); i++) {%>
+                    <tr bgcolor="#FFEBCD">
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    </tr>
+                    <%}
+                        }%>
                 </table>
+                <br/>
+                <br/>
+                <h1>Masukan Jadwal</h1>
+                <form action="controlBuatJadwal" method="post">
+                    <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
+                        <tr bgcolor="#2CF936" align="conter">
+                            <td>Tanggal</td>
+                            <td>Jam</td>
+                            <td>Home</td>
+                            <td>Vs</td>
+                            <td>Away</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="tanggal"/></td>
+                            <td><input type="text" name="jam"/></td>
+                            <td>PSS Sleman</td>
+                            <td>VS</td>
+                            <td><input type="text" name="away"/></td>
+                        </tr>
+                        <td><input type="submit" value="Tambah"/></td>
+                    </table>
+                </form>
             </div>
         </div>
-        </form>
     </body>
 
-    </html>
+</html>
