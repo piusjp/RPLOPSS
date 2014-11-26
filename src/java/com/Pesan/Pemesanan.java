@@ -5,42 +5,35 @@
 package com.Pesan;
 
 import com.tools.Connections;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author admin
  */
-public class Pemesanan  {
-
-    private long id_pemesanan;
-    private long telp;
+public class Pemesanan {
+    
+    private String id_pemesanan;
+    private String telp;
     private String nama;
-    private Date tgl_pertandingan;
+    private String tgl_pertandingan;
     private String tpe_kursi;
-    private int jum_kursi;
+    private String jum_kursi;
     private String kode_booking;
     private String block;
     private final Connection conn = Connections.getKoneksi();
-
+    
     public Pemesanan() {
     }
-
+    
     public String getBlock() {
         return block;
     }
-
+    
     public void setBlock(String block) {
         this.block = block;
     }
@@ -48,28 +41,28 @@ public class Pemesanan  {
     /**
      * @return the id_pemesanan
      */
-    public long getId_pemesanan() {
+    public String getId_pemesanan() {
         return id_pemesanan;
     }
 
     /**
      * @param id_pemesanan the id_pemesanan to set
      */
-    public void setId_pemesanan(long id_pemesanan) {
+    public void setId_pemesanan(String id_pemesanan) {
         this.id_pemesanan = id_pemesanan;
     }
 
     /**
      * @return the telp
      */
-    public long getTelp() {
+    public String getTelp() {
         return telp;
     }
 
     /**
      * @param telp the telp to set
      */
-    public void setTelp(long telp) {
+    public void setTelp(String telp) {
         this.telp = telp;
     }
 
@@ -90,14 +83,14 @@ public class Pemesanan  {
     /**
      * @return the tgl_pertandingan
      */
-    public Date getTgl_pertandingan() {
+    public String getTgl_pertandingan() {
         return tgl_pertandingan;
     }
 
     /**
      * @param tgl_pertandingan the tgl_pertandingan to set
      */
-    public void setTgl_pertandingan(Date tgl_pertandingan) {
+    public void setTgl_pertandingan(String tgl_pertandingan) {
         this.tgl_pertandingan = tgl_pertandingan;
     }
 
@@ -118,21 +111,19 @@ public class Pemesanan  {
     /**
      * @return the jum_kursi
      */
-    public int getJum_kursi() {
+    public String getJum_kursi() {
         return jum_kursi;
     }
 
     /**
      * @param jum_kursi the jum_kursi to set
      */
-    public void setJum_kursi(int jum_kursi) {
+    public void setJum_kursi(String jum_kursi) {
         this.jum_kursi = jum_kursi;
     }
-
     
-
     private String getKode_booking() throws SQLException {
-
+        
         Statement stmt = conn.createStatement();
         String sql = "select current_date from dual";
         String jumlahRow = "";
@@ -144,20 +135,23 @@ public class Pemesanan  {
         kode_booking = jumlahRow.replace("-", "");
         kode_booking = kode_booking.substring(0, 8);
         conn.commit();
-
+        
         return kode_booking;
     }
-
-    private void simpan(Pemesanan p) throws SQLException {
-        String kb=p.getKode_booking()+p.getTpe_kursi()+p.getId_pemesanan();
+    
+    public void simpan(Pemesanan p) throws SQLException {
+        String kb = p.getKode_booking() + p.getTpe_kursi() + p.getId_pemesanan();
+        java.util.Date d = new java.util.Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MMM-yyyy");
+        java.util.Date sd = new java.util.Date(Long.valueOf(p.getTgl_pertandingan().replace("-", "")));
         String sql = "insert into pemesanan(id_pemesan,telp,nama,tgl_pertandingan,"
-                + "tipe_kursi,jum_kursi,status_bayar,kode_booking) "
-                + "values(" + p.getId_pemesanan() + "," + p.getTelp() + ",'" + p.getNama() + "','" + p.getTgl_pertandingan()
-                + "','" + p.getTpe_kursi() + "'," + p.getJum_kursi() + "," + 0 + ",'" + kb.substring(0, 16) + "')";
+                + "tipe_kursi,jum_kursi,status_bayar,kode_booking,id_block) "
+                + "values(" + p.getId_pemesanan() + "," + p.getTelp() + ",'" + p.getNama() + "','" + s.format(sd)
+                + "','" + p.getTpe_kursi() + "'," + p.getJum_kursi() + "," + 0 + ",'" + kb.substring(0, 16) + "','"+p.getBlock()+"')";
         Statement stat = conn.createStatement();
         stat.executeUpdate(sql);
         conn.close();
-
+        
     }
 
     /**

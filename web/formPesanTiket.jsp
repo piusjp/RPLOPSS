@@ -4,6 +4,7 @@
     Author     : Yosua Astutakari
 --%>
 
+<%@page import="com.Pesan.Pemesanan"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.penjadwalan.Jadwal"%>
@@ -252,13 +253,22 @@
                         String e = request.getParameter("tipe_kursi");
                         String f = request.getParameter("block");
                         String g = request.getParameter("jumlah");
-
+                        
                         if (a == null || b == null || c == null || d == null || e == null || f == null || g == null) {
                     %>
                     <h4 align="center" color="red">Semua Field Haruslah berisi </h4>
-                    <%
+                    <%        
                         } else {
-
+                            Pemesanan p = new Pemesanan();
+                            p.setId_pemesanan(a);
+                            p.setNama(b);
+                            p.setTelp(c);
+                            p.setTgl_pertandingan(d);
+                            p.setTpe_kursi(e);
+                            p.setBlock(f);
+                            p.setJum_kursi(g);
+                            p.simpan(p);
+                            
                         }
                     %>
                 </div>
