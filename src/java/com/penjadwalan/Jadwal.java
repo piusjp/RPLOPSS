@@ -232,6 +232,17 @@ public class Jadwal {
         } catch (SQLException exception) {
             throw exception;
         }
+    }
+    public String search(String keyword, String searchData) throws SQLException, Exception {
+        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        String query = "select * from jadwal where TGL_PERTANDINGAN = '" + keyword+"'" ;
 
+        ResultSet rset = stmt.executeQuery(query);
+        String seacrh = "";
+        while (rset.next()) {
+            seacrh = rset.getString(searchData);
+        }
+        conn.commit();
+        return seacrh;
     }
 }
