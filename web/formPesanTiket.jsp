@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <link href="Logo_PSS.png" rel="shortcut icon">
     <style>
         #imag asd{
             display: block;

@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <link href="Logo_PSS.png" rel="shortcut icon">
     <style>
         #imag asd{
             display: block;
@@ -143,81 +144,84 @@
             <div class="dalam"> <h1 align="center">Jadwal Pertandingan PSS Sleman</h1></div>
         </div>
         <form>
-        <div class="frame">
-            <div>
-                <p></p>
-<!--                <table align="center">
-                    <tr>
-                        <td>Bulan
-                        </td>
-                        <td>
-                            <select name="bulan">
-                                <option value="JAN">Januari</option>
-                                <option value="FEB">Februari</option>
-                                <option value="MAR">Maret</option>
-                                <option value="APR">April</option>
-                                <option value="MAY">Mei</option>
-                                <option value="JUN">Juni</option>
-                                <option value="JUL">Juli</option>
-                                <option value="AGT">Agustus</option>
-                                <option value="SEP">September</option>
-                                <option value="OCT">Oktober</option>
-                                <option value="NOV">November</option>
-                                <option value="DEC">Desember</option>
-                            </select> 
-                        </td>
-                        <td>Tahun</td>
-                        <td>
-                            <select name="tahun">
-                                <option value="14">2014</option>
-                                <option value="15">2015</option>
-                                <option value="16">2016</option>
-                                <option value="17">2017</option>
-                                <option value="18">2018</option>
-                                <option value="19">2019</option>
-                            </select> 
-                        </td>
-                        <td><input  name="lihat" type="submit" value="Lihat"></td>
-                    </tr>
-                </table>-->
-            </div>
-            <div>
-                <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
-                    <tr bgcolor="#2CF936" align="conter">
-                        <td>Tanggal</td>
-                        <td>Jam</td>
-                        <td>Home</td>
-                        <td>Vs</td>
-                        <td>Away</td>
-                    </tr>
-                    <%if (request.getAttributeNames().equals("lihat")) {
+            <div class="frame">
+                <div>
+                    <p></p>
+                    <!--                <table align="center">
+                                        <tr>
+                                            <td>Bulan
+                                            </td>
+                                            <td>
+                                                <select name="bulan">
+                                                    <option value="JAN">Januari</option>
+                                                    <option value="FEB">Februari</option>
+                                                    <option value="MAR">Maret</option>
+                                                    <option value="APR">April</option>
+                                                    <option value="MAY">Mei</option>
+                                                    <option value="JUN">Juni</option>
+                                                    <option value="JUL">Juli</option>
+                                                    <option value="AGT">Agustus</option>
+                                                    <option value="SEP">September</option>
+                                                    <option value="OCT">Oktober</option>
+                                                    <option value="NOV">November</option>
+                                                    <option value="DEC">Desember</option>
+                                                </select> 
+                                            </td>
+                                            <td>Tahun</td>
+                                            <td>
+                                                <select name="tahun">
+                                                    <option value="14">2014</option>
+                                                    <option value="15">2015</option>
+                                                    <option value="16">2016</option>
+                                                    <option value="17">2017</option>
+                                                    <option value="18">2018</option>
+                                                    <option value="19">2019</option>
+                                                </select> 
+                                            </td>
+                                            <td><input  name="lihat" type="submit" value="Lihat"></td>
+                                        </tr>
+                                    </table>-->
+                </div>
+                <div>
+                    <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
+                        <tr bgcolor="#2CF936" align="conter">
+                            <td>Tanggal</td>
+                            <td>Jam</td>
+                            <td>Home</td>
+                            <td>Vs</td>
+                            <td>Away</td>
+                        </tr>
+                        <%if (request.getAttributeNames().equals("lihat")) {
+                                Jadwal j = new Jadwal();
+                                List<Jadwal> k = j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
+                                for (int i = 0; i < k.size(); i++) {
+                        %>
+                        <tr bgcolor="#FFEBCD">
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        </tr>
+
+
+                        <% }
+                        } else {
                             Jadwal j = new Jadwal();
-                        List<Jadwal> k= j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
-                        for (int i = 0; i < k.size(); i++) {
-                    %>
-                    <tr bgcolor="#FFEBCD">
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                    </tr>
-                      
-                        
-                    <% }}else{  Jadwal j = new Jadwal();
-                    List<Jadwal> jad=j.tampilJadwal();
-                    for (int i = 0; i < jad.size(); i++) {%>
-                   <tr bgcolor="#FFEBCD">
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                    </tr>
-                    <%}}%>
-                </table>
+                            List<Jadwal> jad = j.tampilJadwal();
+                            for (int i = 0; i < jad.size(); i++) {%>
+                        <tr bgcolor="#FFEBCD">
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        </tr>
+                        <%}
+                            }%>
+                    </table>
+                </div>
             </div>
-        </div>
         </form>
 
     </body>
