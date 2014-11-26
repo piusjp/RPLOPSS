@@ -145,7 +145,7 @@
         <div class="frame">
             <div>
                 <p></p>
-                <table align="center">
+<!--                <table align="center">
                     <tr>
                         <td>Bulan
                         </td>
@@ -178,10 +178,10 @@
                         </td>
                         <td><input  name="lihat" type="submit" value="Lihat"></td>
                     </tr>
-                </table>
+                </table>-->
             </div>
             <div>
-                <table align="center" border="1">
+                <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
                     <tr bgcolor="#2CF936" align="conter">
                         <td>Tanggal</td>
                         <td>Jam</td>

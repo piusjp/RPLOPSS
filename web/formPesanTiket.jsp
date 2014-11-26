@@ -170,7 +170,7 @@
 
                 </div>
             </div>
-            <form action='Pemesanan' method="post">
+            <form action='' method="post">
                 <div class="kanan">
                     <h1 align="center">Form Pemesanan Titet</h1>
                     <table>
@@ -179,7 +179,7 @@
                                 ID KTP
                             </td>
                             <td>
-                                <input type="text" name="id_ktp" size="16">
+                                <input type="text" name="id_ktp" size="16" title="Berisi nomor Identitas anda contoh ='0293458373823'">
                             </td>
                         </tr>
                         <tr>
@@ -187,7 +187,7 @@
                                 Nama
                             </td>
                             <td>
-                                <input type="text" name="nama" size="16">
+                                <input type="text" name="nama" size="16" title="Isi nama dengan karakter contoh 'Marni Asih'">
                             </td>
                         </tr>
                         <tr>
@@ -195,7 +195,7 @@
                                 Nomor Telp
                             </td>
                             <td>
-                                <input type="text" name="No_Telp" size="16">
+                                <input type="text" name="No_Telp" size="16" title="Nomor telpon yang berisi angka, Contoh='0835876473198'">
                             </td>
                         </tr>
                         <tr>
@@ -203,7 +203,7 @@
                                 Tanggal Pertandingan
                             </td>
                             <td>
-                                <input type="date" name="tgl_pertandingan">
+                                <input type="date" name="tgl_pertandingan" title="Tanggal Pertandingan">
                             </td>
                         </tr>
                         <tr>
@@ -211,7 +211,7 @@
                                 Tipe Kursi
                             </td>
                             <td>
-                                <select name="tipe_kursi">
+                                <select name="tipe_kursi" title="Tipe Kursi">
                                     <option value="VVIP">VVIP</option>
                                     <option value="VIP">VIP</option>
                                     <option value="STANDARD">STANDARD</option>
@@ -223,7 +223,7 @@
                                 Block
                             </td>
                             <td>
-                                <select name="block">
+                                <select name="block" title="Block Kursi">
                                     <option value="A">A</option>
                                     <option value="B">B</option>
                                     <option value="C">C</option>
@@ -234,19 +234,21 @@
 
                         <tr>
                             <td>Jumlah Kursi</td>
-                            <td><input name="jumlah" type="number"></td>
+                            <td><input name="jumlah" type="number" title="Jumlah Kursi tidak boleh nerisikan nilai negatif"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" value="Pesan">
+                                <input type="submit" value="Pesan" title="Tombol Pesan">
                             </td>
                         </tr>
                     </table>
                 </div>
+                <%
+                %>
             </form>
         </div>
 
     </body>
-    <html>
+</html>
 

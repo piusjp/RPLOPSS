@@ -129,27 +129,5 @@
 
             </div>
         </div>
-        <div>
-            <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
-            <div id="wowslider-container1">
-                <div class="ws_images"><ul>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\p1.jpeg"><img src="data1/images/p1.jpg" alt="p1" title="p1" id="wows1_0"/></a></li>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\p2.jpeg"><img src="data1/images/p2.jpg" alt="p2" title="p2" id="wows1_1"/></a></li>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\p3.jpeg"><img src="data1/images/p3.jpg" alt="p3" title="p3" id="wows1_2"/></a></li>
-                        <li><a href="E:\DATA KULIAH\SEMESTER 5\RPL T\ProjectKita\jpeg"><img src="data1/images/p4.jpg" alt="p4" title="p4" id="wows1_3"/></a></li>
-                    </ul></div>
-                <div class="ws_bullets"><div>
-                        <a href="#" title="p1"><img src="data1/tooltips/p1.jpg" alt="p1"/>1</a>
-                        <a href="#" title="p2"><img src="data1/tooltips/p2.jpg" alt="p2"/>2</a>
-                        <a href="#" title="p3"><img src="data1/tooltips/p3.jpg" alt="p3"/>3</a>
-                        <a href="#" title="p4"><img src="data1/tooltips/p4.jpg" alt="p4"/>4</a>
-                    </div></div><span class="wsl"><a href="http://wowslider.com/vu">image carousel</a> by WOWSlider.com v7.2</span>
-                <div class="ws_shadow"></div>
-            </div>	
-            <script type="text/javascript" src="engine1/wowslider.js"></script>
-            <script type="text/javascript" src="engine1/script.js"></script>
-            <!-- End WOWSlider.com BODY section -->
-
-        </div>
     </body>
-    </html>
+</html>

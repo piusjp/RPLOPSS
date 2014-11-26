@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-public class Pemesanan extends HttpServlet {
+public class Pemesanan  {
 
     private long id_pemesanan;
     private long telp;
@@ -129,28 +129,7 @@ public class Pemesanan extends HttpServlet {
         this.jum_kursi = jum_kursi;
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        try {
-            Pemesanan p=new Pemesanan();
-            
-            p.setId_pemesanan(Long.valueOf(request.getParameter("id_ktp")));
-            p.setNama(request.getParameter("nama"));
-            p.setTelp(Long.valueOf(request.getParameter("No_Telp")));
-            p.setTgl_pertandingan(Date.valueOf(request.getParameter("tgl_pertandingan")));
-            p.setTpe_kursi(request.getParameter("tipe_kursi"));
-            p.setBlock(request.getParameter("block"));
-            p.setJum_kursi(Integer.parseInt(request.getParameter("jumlah")));
-            p.simpan(p);
-            System.out.println("asdasdasdasdasd");
-            request.getRequestDispatcher("/formPemesananTiket.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            
-            Logger.getLogger(Pemesanan.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+    
 
     private String getKode_booking() throws SQLException {
 
@@ -159,7 +138,7 @@ public class Pemesanan extends HttpServlet {
         String jumlahRow = "";
         ResultSet rset = stmt.executeQuery(sql);
         while (rset.next()) {
-            jumlahRow = rset.getString("current_date") + "AS";
+            jumlahRow = rset.getString("current_date");
             //    jumlahRow = rset.getString("no_faktur");
         }
         kode_booking = jumlahRow.replace("-", "");
@@ -170,10 +149,11 @@ public class Pemesanan extends HttpServlet {
     }
 
     private void simpan(Pemesanan p) throws SQLException {
+        String kb=p.getKode_booking()+p.getTpe_kursi()+p.getId_pemesanan();
         String sql = "insert into pemesanan(id_pemesan,telp,nama,tgl_pertandingan,"
                 + "tipe_kursi,jum_kursi,status_bayar,kode_booking) "
                 + "values(" + p.getId_pemesanan() + "," + p.getTelp() + ",'" + p.getNama() + "','" + p.getTgl_pertandingan()
-                + "','" + p.getTpe_kursi() + "'," + p.getJum_kursi() + "," + 0 + ",'" + p.getKode_booking() + "')";
+                + "','" + p.getTpe_kursi() + "'," + p.getJum_kursi() + "," + 0 + ",'" + kb.substring(0, 16) + "')";
         Statement stat = conn.createStatement();
         stat.executeUpdate(sql);
         conn.close();
