@@ -203,14 +203,14 @@
                                 <input type="text" name="No_Telp" size="16" title="Nomor telpon yang berisi angka, Contoh='0835876473198'">
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                Tanggal Pertandingan
-                            </td>
-                            <td>
-                                <input type="date" name="tgl_pertandingan" title="Tanggal Pertandingan">
-                            </td>
-                        </tr>
+                        <!--                        <tr>
+                                                    <td>
+                                                        Tanggal Pertandingan
+                                                    </td>
+                                                    <td>
+                                                        <input type="date" name="tgl_pertandingan" title="Tanggal Pertandingan">
+                                                    </td>
+                                                </tr>-->
                         <tr>
                             <td>
                                 Tipe Kursi
@@ -223,19 +223,19 @@
                                 </select> 
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                Block
-                            </td>
-                            <td>
-                                <select name="block" title="Block Kursi">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                </select> 
-                            </td>
-                        </tr>
+                        <!--                        <tr>
+                                                    <td>
+                                                        Block
+                                                    </td>
+                                                    <td>
+                                                        <select name="block" title="Block Kursi">
+                                                            <option value="A">A</option>
+                                                            <option value="B">B</option>
+                                                            <option value="C">C</option>
+                                                            <option value="D">D</option>
+                                                        </select> 
+                                                    </td>
+                                                </tr>-->
 
                         <tr>
                             <td>Jumlah Kursi</td>
@@ -254,26 +254,19 @@
                         String c = request.getParameter("No_Telp");
                         String d = request.getParameter("tgl_pertandingan");
                         String e = request.getParameter("tipe_kursi");
-                        String f = request.getParameter("block");
+//                        String f = request.getParameter("block");
                         String g = request.getParameter("jumlah");
 
-                        if (a == null || b == null || c == null || d == null || e == null || f == null || g == null) {
-
-
-                    %>
-
-                    <%                                           } else {
-                            Pemesanan p = new Pemesanan();
-                            p.setId_pemesanan(a);
-                            p.setNama(b);
-                            p.setTelp(c);
-                            p.setTgl_pertandingan(d);
-                            p.setTpe_kursi(e);
-                            p.setBlock(f);
-                            p.setJum_kursi(g);
-                            p.simpan(p);
-
-                        }
+                        Pemesanan p = new Pemesanan();
+                        p.setId_pemesanan(a);
+                        p.setNama(b);
+                        p.setTelp(c);
+                        p.setTgl_pertandingan(d);
+                        p.setTpe_kursi(e);
+//                            p.setBlock(f);
+                        p.setJum_kursi(g);
+                        p.setTgl_pertandingan(String.valueOf(k.getTgl()).substring(0, 10));
+                        p.simpan(p);
                     %>
                 </div>
 

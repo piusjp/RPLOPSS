@@ -160,31 +160,45 @@ public class Pemesanan {
     }
 
     public void simpan(Pemesanan p) throws SQLException {
-        String kb = p.getKode_booking() + p.getTpe_kursi().substring(0, 4) + p.getId_pemesanan();
-        java.util.Date d = new java.util.Date();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MMM-yyyy");
-        String k = p.getHarga(p.getTpe_kursi());
-        java.util.Date sd = new java.util.Date(Long.valueOf(p.getTgl_pertandingan().replace("-", "")));
+        String b = amblBlock(p.getTpe_kursi());
+        String kb = p.getKode_booking()+"SD";
+        gantiKapasitas(b, p.getTpe_kursi(), p.getJum_kursi());
+        String k = getHarga(p.getTpe_kursi());
+        long a = Long.parseLong(k) * Long.parseLong(p.getJum_kursi());
         String sql = "insert into pemesanan(id_pemesan,telp,nama,tgl_pertandingan,"
                 + "tipe_kursi,jum_kursi,status_bayar,kode_booking,id_block,harga) "
-                + "values(" + p.getId_pemesanan() + "," + p.getTelp() + ",'" + p.getNama() + "','" + s.format(sd)
+                + "values(" + p.getId_pemesanan() + "," + p.getTelp() + ",'" + p.getNama() + "','" + p.getTgl_pertandingan()
                 + "','" + p.getTpe_kursi() + "'," + p.getJum_kursi() + "," + 0 + ",'"
-                + kb.substring(0, 16) + "','" + p.getBlock() + "'," + k + ")";
+                + kb + "','" + b + "'," + a + ")";
         Statement stat = conn.createStatement();
         stat.executeUpdate(sql);
-        conn.close();
+//        conn.close();
+    }
+
+    public String amblBlock(String tipe) throws SQLException {
+        if (!hitungKapasitas("A", tipe).equals("0")) {
+            return "A";
+        } else if (!hitungKapasitas("B", tipe).equals("0")) {
+            return "B";
+        } else if (!hitungKapasitas("C", tipe).equals("0")) {
+            return "C";
+        } else if (!hitungKapasitas("D", tipe).equals("0")) {
+            return "D";
+        } else {
+            return "";
+        }
 
     }
 
     public void gantiKapasitas(String id, String tipe, String ganti) throws SQLException {
         String s = hitungKapasitas(id, tipe);
-        int a = Integer.parseInt(s);
-        int b = Integer.parseInt(ganti);
+        int a = Integer.valueOf(s);
+        int b = Integer.valueOf(ganti);
         int c = a - b;
         String sql = "update block set jumlah=" + c + " where id_block like '" + id + "' and tipe_kursi like '" + tipe + "'";
         Statement t = conn.createStatement();
         t.executeUpdate(sql);
-        conn.close();
+        
     }
 
     public String hitungKapasitas(String id, String tipe) throws SQLException {
