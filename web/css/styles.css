@@ -92,12 +92,12 @@
 #cssmenu ul li:hover,
 #cssmenu ul li.active {
   background: #0f71ba;
-  background: -moz-linear-gradient(top, #02FD06 0%, #02FD06 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #02FD06), color-stop(100%, #02FD06));
-  background: -webkit-linear-gradient(top, #02FD06 0%, #02FD06 100%);
-  background: -o-linear-gradient(top, #02FD06 0%, #02FD06 100%);
-  background: -ms-linear-gradient(top, #02FD06 0%, #02FD06 100%);
-  background: linear-gradient(to bottom, #02FD06 0%, #02FD06 100%);
+  background: -moz-linear-gradient(top, #1B8EE6 0%, #1B8EE6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1B8EE6), color-stop(100%, #1B8EE6));
+  background: -webkit-linear-gradient(top, #1B8EE6 0%, #1B8EE6 100%);
+  background: -o-linear-gradient(top, #1B8EE6 0%, #1B8EE6 100%);
+  background: -ms-linear-gradient(top, #1B8EE6 0%, #1B8EE6 100%);
+  background: linear-gradient(to bottom, #1B8EE6 0%, #1B8EE6 100%);
 }
 #cssmenu ul li a:hover,
 #cssmenu ul li.active > a {

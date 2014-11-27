@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <link href="Logo_PSS.png" rel="shortcut icon">
     <style>
         #imag asd{
             display: block;
@@ -135,12 +136,15 @@
                 <li ><a href='formOp.jsp'><span>Home</span></a></li>
                 <li class='active'><a href='formBuatJadwal.jsp'><span>Buat Jadwal Pertandingan</span></a></li>
                 <li><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
-                <li class='last'><a href='#'><span>Laporan Satu Musim</span></a></li>
+                <li ><a href='#'><span>Laporan Satu Musim</span></a></li>
+                <li class='last'><a href="home.jsp"<% 
+                session.removeAttribute("username");
+                %> ><span>Logout</span></a> </li>
             </ul>
         </div>
         <div class="top">
             <img src="img/Logo_PSS.png" width="150px"height="150px">
-            <div class="dalam"> <h1 align="center">Jadwal Pertandingan PSS Sleman</h1></div>
+            <div class="dalam"> <h1 align="center" style="color: #ffffff;">Jadwal Pertandingan PSS Sleman</h1></div>
         </div>
         <div class="frame">
             <div>

@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
+    <link href="Logo_PSS.png" rel="shortcut icon">
     <style>
         #imag asd{
             display: block;
@@ -112,10 +113,14 @@
 
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='home.jsp'><span>Home</span></a></li>
+                <li class='active'><a href='formOp.jsp'><span>Home</span></a></li>
                 <li><a href='formBuatJadwal.jsp'><span>Buat Jadwal Pertandingan</span></a></li>
                 <li><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
-                <li class='last'><a href='#'><span>Laporan Satu Musim</span></a></li>
+                <li><a href='#'><span>Laporan Satu Musim</span></a></li>
+                <li class='last'><a href="home.jsp"<%
+                    session.removeAttribute("username");
+                                    %> ><span>Logout</span></a> </li>
+
             </ul>
         </div>
         <div class="leftSlide" align="justify">
@@ -153,4 +158,4 @@
         </div>
     </body>
 
-    </html>
+</html>

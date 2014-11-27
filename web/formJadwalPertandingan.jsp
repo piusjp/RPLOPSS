@@ -141,7 +141,7 @@
         </div>
         <div class="top">
             <img src="img/Logo_PSS.png" width="150px"height="150px">
-            <div class="dalam"> <h1 align="center">Jadwal Pertandingan PSS Sleman</h1></div>
+            <div class="dalam"> <h1 align="center" style="color: #ffffff;">Jadwal Pertandingan PSS Sleman</h1></div>
         </div>
         <form>
             <div class="frame">

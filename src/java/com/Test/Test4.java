@@ -6,6 +6,7 @@
 
 package com.Test;
 
+import com.Pesan.Pemesanan;
 import com.penjadwalan.Jadwal;
 import java.sql.SQLException;
 
@@ -15,7 +16,15 @@ import java.sql.SQLException;
  */
 public class Test4 {
     public static void main(String[] args) throws SQLException {
-        Jadwal j=new Jadwal();
-        j.lihatNamaLogo();
+        Pemesanan p=new Pemesanan();
+        p.setBlock("A");
+        p.setId_pemesanan("098376273284");
+        p.setNama("Marni");
+        p.setJum_kursi("5");
+        p.setTelp("002873");
+        p.setTgl_pertandingan("13-12-2014");
+        p.setTpe_kursi("VVIP");
+        Pemesanan s=new Pemesanan();
+        s.simpan(p);
     }
 }

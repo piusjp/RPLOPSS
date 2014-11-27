@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
+    <link href="Logo_PSS.png" rel="shortcut icon">
     <style>
         #imag asd{
             display: block;
@@ -132,10 +133,12 @@
                             </tr>
                             <tr>
                                 <td>Password</td>
-                                <td><input type="text" name="password"/></td>
+                                <td><input type="password" name="password"/></td>
                                 <td><input type="submit" name="Masuk"/></td>
                             </tr>
-
+                            <%
+                                session.setAttribute("username", request.getParameter("user"));
+                            %>
                         </table>
                     </form>
                 </span>

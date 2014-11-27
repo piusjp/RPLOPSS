@@ -17,9 +17,8 @@ public class test5 {
 
     public static void main(String[] args) throws SQLException {
         Jadwal j = new Jadwal();
-        List<Jadwal> k = j.tampilJadwal("DEC", "14");
-        for (int i = 0; i < k.size(); i++) {
-            System.out.println(k.get(i).getLawan());
-        }
+        Jadwal s = new Jadwal();
+        s = j.lihatNamaLogo();
+        System.out.println("nama : " + s.getLawan());
     }
 }

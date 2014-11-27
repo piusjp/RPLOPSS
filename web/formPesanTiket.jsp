@@ -148,7 +148,8 @@
         <div class="leftSlide4">
             <div class="kiri" >
                 <div class="atas" align="center">
-                    PSS SLEMAN vs&nbsp&nbsp&nbsp&nbsp<%Jadwal j = new Jadwal();
+                    PSS SLEMAN vs&nbsp&nbsp&nbsp&nbsp<%
+                        Jadwal j = new Jadwal();
                         Jadwal k = new Jadwal();
                         k = j.lihatNamaLogo();
                         out.print(k.getLawan());
@@ -243,35 +244,39 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" value="Pesan" title="Tombol Pesan">
+                                <input type="submit" value="Pesan" title="Tombol Pesan"
+
+                                       <%                                           String a = request.getParameter("id_ktp");
+                                           String b = request.getParameter("nama");
+                                           String c = request.getParameter("No_Telp");
+                                           String d = request.getParameter("tgl_pertandingan");
+                                           String e = request.getParameter("tipe_kursi");
+                                           String f = request.getParameter("block");
+                                           String g = request.getParameter("jumlah");
+
+                                           if (a == null || b == null || c == null || d == null || e == null || f == null || g == null) {
+
+                                              
+                                       %>
+
+                                       <%
+                                           } else {
+                                               Pemesanan p = new Pemesanan();
+                                               p.setId_pemesanan(a);
+                                               p.setNama(b);
+                                               p.setTelp(c);
+                                               p.setTgl_pertandingan(d);
+                                               p.setTpe_kursi(e);
+                                               p.setBlock(f);
+                                               p.setJum_kursi(g);
+                                               p.simpan(p);
+
+                                           }
+                                       %>
+                                       >
                             </td>
                         </tr>
                     </table>
-                    <%                        String a = request.getParameter("id_ktp");
-                        String b = request.getParameter("nama");
-                        String c = request.getParameter("No_Telp");
-                        String d = request.getParameter("tgl_pertandingan");
-                        String e = request.getParameter("tipe_kursi");
-                        String f = request.getParameter("block");
-                        String g = request.getParameter("jumlah");
-                        
-                        if (a == null || b == null || c == null || d == null || e == null || f == null || g == null) {
-                    %>
-                    <h4 align="center" color="red">Semua Field Haruslah berisi </h4>
-                    <%        
-                        } else {
-                            Pemesanan p = new Pemesanan();
-                            p.setId_pemesanan(a);
-                            p.setNama(b);
-                            p.setTelp(c);
-                            p.setTgl_pertandingan(d);
-                            p.setTpe_kursi(e);
-                            p.setBlock(f);
-                            p.setJum_kursi(g);
-                            p.simpan(p);
-                            
-                        }
-                    %>
                 </div>
 
             </form>
