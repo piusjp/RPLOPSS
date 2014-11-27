@@ -16,6 +16,6 @@ public class test {
 
     public static void main(String[] args) throws SQLException {
         Pemesanan p = new Pemesanan();
-        System.out.println(p.hitungKapasitas("A", "VVIP"));
+        p.gantiKapasitas("A", "VVIP", "5");
     }
 }

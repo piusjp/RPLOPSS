@@ -176,17 +176,27 @@ public class Pemesanan {
 
     }
 
-    public  String hitungKapasitas(String id,String tipe) throws SQLException {
-        String sql="SELECT JUMLAH FROM BLOCK WHERE ID_BLOCK LIKE '"+id+"' AND TIPE_KURSI LIKE '"+tipe+"'";
+    public void gantiKapasitas(String id, String tipe, String ganti) throws SQLException {
+        String s = hitungKapasitas(id, tipe);
+        int a = Integer.parseInt(s);
+        int b = Integer.parseInt(ganti);
+        int c = a - b;
+        String sql = "update block set jumlah=" + c + " where id_block like '" + id + "' and tipe_kursi like '" + tipe + "'";
+        Statement t = conn.createStatement();
+        t.executeUpdate(sql);
+        conn.close();
+    }
+
+    public String hitungKapasitas(String id, String tipe) throws SQLException {
+        String sql = "SELECT JUMLAH FROM BLOCK WHERE ID_BLOCK LIKE '" + id + "' AND TIPE_KURSI LIKE '" + tipe + "'";
         String h = "";
-        Statement s=conn.createStatement();
+        Statement s = conn.createStatement();
         ResultSet r = s.executeQuery(sql);
         while (r.next()) {
             h = r.getString("jumlah");
         }
         conn.commit();
         return h;
-        
     }
 
     /**

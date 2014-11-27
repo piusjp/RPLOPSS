@@ -134,12 +134,12 @@
         <div id='cssmenu'>
             <ul>
                 <li ><a href='formOp.jsp'><span>Home</span></a></li>
-                <li class='active'><a href='formBuatJadwal.jsp'><span>Buat Jadwal Pertandingan</span></a></li>
-                <li><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
+                <li ><a href='formBuatJadwal.jsp'><span>Buat Jadwal Pertandingan</span></a></li>
+                <li class='active'><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
                 <li ><a href='#'><span>Laporan Satu Musim</span></a></li>
-                <li class='last'><a href="home.jsp"<% 
-                session.removeAttribute("username");
-                %> ><span>Logout</span></a> </li>
+                <li class='last'><a href="home.jsp"<%
+                    session.removeAttribute("username");
+                                    %> ><span>Logout</span></a> </li>
             </ul>
         </div>
         <div class="top">
@@ -152,46 +152,46 @@
             </div>
             <div>
                 <h1>Pilih Jadwal yang akan Diubah</h1>
-                    <form action="formLoadPilihan" method="post">
-                <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
-                    <tr bgcolor="#2CF936" align="conter">
-                        <td>Tanggal</td>
-                        <td>Jam</td>
-                        <td>Home</td>
-                        <td>Vs</td>
-                        <td>Away</td>
-                        <td>      </td>
-                    </tr>
-                    <%if (request.getAttributeNames().equals("lihat")) {
+                <form action="formLoadPilihan" method="post">
+                    <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
+                        <tr bgcolor="#2CF936" align="conter">
+                            <td>Tanggal</td>
+                            <td>Jam</td>
+                            <td>Home</td>
+                            <td>Vs</td>
+                            <td>Away</td>
+                            <td>      </td>
+                        </tr>
+                        <%if (request.getAttributeNames().equals("lihat")) {
+                                Jadwal j = new Jadwal();
+                                List<Jadwal> k = j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
+                                for (int i = 0; i < k.size(); i++) {
+                        %>
+                        <tr bgcolor="#FFEBCD">
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        </tr>
+
+
+                        <% }
+                        } else {
                             Jadwal j = new Jadwal();
-                            List<Jadwal> k = j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
-                            for (int i = 0; i < k.size(); i++) {
-                    %>
-                    <tr bgcolor="#FFEBCD">
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                    </tr>
-
-
-                    <% }
-                    } else {
-                        Jadwal j = new Jadwal();
-                        List<Jadwal> jad = j.tampilJadwal();
-                        for (int i = 0; i < jad.size(); i++) {%>
-                    <tr bgcolor="#FFEBCD">
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        <td><input type="submit" value="Pilih"/></td>
-                    </tr>
-                    <%}
+                            List<Jadwal> jad = j.tampilJadwal();
+                            for (int i = 0; i < jad.size(); i++) {%>
+                        <tr bgcolor="#FFEBCD">
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                            <td><input type="submit" value="Pilih"/></td>
+                        </tr>
+                        <%}
                         }%>
-                </table>
+                    </table>
                 </form>
                 <br/>
                 <br/>
