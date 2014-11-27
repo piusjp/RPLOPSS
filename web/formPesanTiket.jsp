@@ -244,39 +244,37 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" value="Pesan" title="Tombol Pesan"
-
-                                       <%                                           String a = request.getParameter("id_ktp");
-                                           String b = request.getParameter("nama");
-                                           String c = request.getParameter("No_Telp");
-                                           String d = request.getParameter("tgl_pertandingan");
-                                           String e = request.getParameter("tipe_kursi");
-                                           String f = request.getParameter("block");
-                                           String g = request.getParameter("jumlah");
-
-                                           if (a == null || b == null || c == null || d == null || e == null || f == null || g == null) {
-
-                                              
-                                       %>
-
-                                       <%
-                                           } else {
-                                               Pemesanan p = new Pemesanan();
-                                               p.setId_pemesanan(a);
-                                               p.setNama(b);
-                                               p.setTelp(c);
-                                               p.setTgl_pertandingan(d);
-                                               p.setTpe_kursi(e);
-                                               p.setBlock(f);
-                                               p.setJum_kursi(g);
-                                               p.simpan(p);
-
-                                           }
-                                       %>
-                                       >
+                                <input type="submit" value="Pesan" title="Tombol Pesan">
                             </td>
                         </tr>
+
                     </table>
+                    <%                            String a = request.getParameter("id_ktp");
+                        String b = request.getParameter("nama");
+                        String c = request.getParameter("No_Telp");
+                        String d = request.getParameter("tgl_pertandingan");
+                        String e = request.getParameter("tipe_kursi");
+                        String f = request.getParameter("block");
+                        String g = request.getParameter("jumlah");
+
+                        if (a == null || b == null || c == null || d == null || e == null || f == null || g == null) {
+
+
+                    %>
+
+                    <%                                           } else {
+                            Pemesanan p = new Pemesanan();
+                            p.setId_pemesanan(a);
+                            p.setNama(b);
+                            p.setTelp(c);
+                            p.setTgl_pertandingan(d);
+                            p.setTpe_kursi(e);
+                            p.setBlock(f);
+                            p.setJum_kursi(g);
+                            p.simpan(p);
+
+                        }
+                    %>
                 </div>
 
             </form>

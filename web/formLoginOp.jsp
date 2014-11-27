@@ -113,15 +113,15 @@
 
         <div id='cssmenu'>
             <ul>
-                <li class='active'><a href='home.jsp'><span>Home</span></a></li>
-                <li><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
+                <li class='active'><a href='home.jsp'><span>Home PSS</span></a></li>
+<!--                <li><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
                 <li><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
-                <li class='last'><a href='#'><span>Jalur Terpendek</span></a></li>
+                <li class='last'><a href='#'><span>Jalur Terpendek</span></a></li>-->
             </ul>
         </div>
         <div class="leftSlide" align="justify">
             <div class="left">
-                <img src="img/Logo_PSS.png" width="150px" height="150px">    
+                <img src="img/Logo_PSS.png" width="150px" height="150px" title="Logo PSS">    
             </div>
             <div class="leftSlide1">
                 <span style="color: #ffffff;">

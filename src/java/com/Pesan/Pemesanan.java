@@ -163,7 +163,7 @@ public class Pemesanan {
         String kb = p.getKode_booking() + p.getTpe_kursi().substring(0, 4) + p.getId_pemesanan();
         java.util.Date d = new java.util.Date();
         SimpleDateFormat s = new SimpleDateFormat("dd-MMM-yyyy");
-        String k=p.getHarga(p.getTpe_kursi());
+        String k = p.getHarga(p.getTpe_kursi());
         java.util.Date sd = new java.util.Date(Long.valueOf(p.getTgl_pertandingan().replace("-", "")));
         String sql = "insert into pemesanan(id_pemesan,telp,nama,tgl_pertandingan,"
                 + "tipe_kursi,jum_kursi,status_bayar,kode_booking,id_block,harga) "
@@ -174,6 +174,19 @@ public class Pemesanan {
         stat.executeUpdate(sql);
         conn.close();
 
+    }
+
+    public  String hitungKapasitas(String id,String tipe) throws SQLException {
+        String sql="SELECT JUMLAH FROM BLOCK WHERE ID_BLOCK LIKE '"+id+"' AND TIPE_KURSI LIKE '"+tipe+"'";
+        String h = "";
+        Statement s=conn.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        while (r.next()) {
+            h = r.getString("jumlah");
+        }
+        conn.commit();
+        return h;
+        
     }
 
     /**
