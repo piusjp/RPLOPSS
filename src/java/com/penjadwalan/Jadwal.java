@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class Jadwal {
 
     private String lawan;
-    private Date tgl;
+    private String tgl;
     private String jam;
     private String url, status_main;
     private final Connection conn = Connections.getKoneksi();
@@ -48,11 +48,11 @@ public class Jadwal {
         this.lawan = lawan;
     }
 
-    public Date getTgl() {
+    public String getTgl() {
         return tgl;
     }
 
-    public void setTgl(Date tgl) {
+    public void setTgl(String tgl) {
         this.tgl = tgl;
     }
 
@@ -73,7 +73,7 @@ public class Jadwal {
         try {
             while (result.next()) {
                 Jadwal s = new Jadwal();
-                s.setTgl(result.getDate("TGL_PERTANDINGAN"));
+                s.setTgl(result.getString("TGL_PERTANDINGAN"));
                 s.setLawan(result.getString("lawan"));
                 s.setJam(result.getString("JAM"));
                 kategoris.add(s);
@@ -137,7 +137,7 @@ public class Jadwal {
                     + ",urllogo,status_main)"
                     + "values (?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setDate(1, dataJadwal.getTgl());
+            pstmt.setString(1, dataJadwal.getTgl());
             pstmt.setString(2, dataJadwal.getLawan());
             pstmt.setString(3, dataJadwal.getJam());
             pstmt.setString(4, dataJadwal.getUrl());
@@ -162,13 +162,14 @@ public class Jadwal {
             }
         }
     }
-    public void updateJadwal(Jadwal dataJadwal,String tgl) throws SQLException {
+
+    public void updateJadwal(Jadwal dataJadwal, String tgl) throws SQLException {
         PreparedStatement pstmt = null;
         try {
             conn.setAutoCommit(false);
-            String sql = "update jadwal set tgl_pertandingan=?, lawan=?, jam=? where tgl_pertandingan = to_date('"+tgl+"','dd-mm-yyyy')";
+            String sql = "update jadwal set tgl_pertandingan=?, lawan=?, jam=? where tgl_pertandingan = to_date('" + tgl + "','dd-mm-yyyy')";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setDate(1, dataJadwal.getTgl());
+            pstmt.setString(1, dataJadwal.getTgl());
             pstmt.setString(2, dataJadwal.getLawan());
             pstmt.setString(3, dataJadwal.getJam());
             pstmt.executeUpdate();
@@ -196,13 +197,13 @@ public class Jadwal {
         PreparedStatement statement = null;
         ResultSet result = null;
 
-        statement = conn.prepareStatement("select * from jadwal where status_main like 'belum' order by tgl_pertandingan ASC");
+        statement = conn.prepareStatement("select lawan,urllogo,to_char(tgl_pertandingan,'dd-MON-yyyy') as a,jam from jadwal where status_main like 'belum' order by tgl_pertandingan ASC");
         result = statement.executeQuery();
         Jadwal a = new Jadwal();
         while (result.next()) {
             a.setLawan(result.getString("Lawan"));
             a.setUrl(result.getString("urllogo"));
-            a.setTgl(result.getDate("TGL_PERTANDINGAN"));
+            a.setTgl(result.getString("a"));
             a.setJam(result.getString("jam"));
             return a;
 
@@ -221,7 +222,7 @@ public class Jadwal {
 
             while (result.next()) {
                 Jadwal s = new Jadwal();
-                s.setTgl(result.getDate("TGL_PERTANDINGAN"));
+                s.setTgl(result.getString("TGL_PERTANDINGAN"));
                 s.setLawan(result.getString("lawan"));
                 s.setJam(result.getString("JAM"));
                 kategoris.add(s);
@@ -233,9 +234,10 @@ public class Jadwal {
             throw exception;
         }
     }
+
     public String search(String keyword, String searchData) throws SQLException, Exception {
         Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        String query = "select * from jadwal where TGL_PERTANDINGAN = '" + keyword+"'" ;
+        String query = "select * from jadwal where TGL_PERTANDINGAN = '" + keyword + "'";
 
         ResultSet rset = stmt.executeQuery(query);
         String seacrh = "";

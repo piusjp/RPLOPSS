@@ -142,7 +142,7 @@
                 <li><a href='home.jsp'><span>Home</span></a></li>
                 <li><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
                 <li class='active'><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
-                <li class='last'><a href='#'><span>Jalur Terpendek</span></a></li>
+                <li class='last'><a href='#'><span title="Konfirmasi Pembayaran Tiket">Konfirmasi</span></a></li>
             </ul>
         </div>
         <div class="leftSlide4">
@@ -166,8 +166,8 @@
                     </table>
                     Stadion Maguwoharjo Depok Sleman Yogyakarta
                     <p align="center">
-                        <% String date = String.valueOf(k.getTgl());
-                            out.print(date.substring(0, 10) + " pada pukul " + k.getJam());
+                        <% String date = k.getTgl();
+                            out.print(date.substring(0, 11) + " pada pukul " + k.getJam());
 
                         %>
 
@@ -256,17 +256,21 @@
                         String e = request.getParameter("tipe_kursi");
 //                        String f = request.getParameter("block");
                         String g = request.getParameter("jumlah");
-
-                        Pemesanan p = new Pemesanan();
-                        p.setId_pemesanan(a);
-                        p.setNama(b);
-                        p.setTelp(c);
-                        p.setTgl_pertandingan(d);
-                        p.setTpe_kursi(e);
+                        if (a != null) {
+                            Pemesanan p = new Pemesanan();
+                            p.setId_pemesanan(a);
+                            p.setNama(b);
+                            p.setTelp(c);
+                            p.setTgl_pertandingan(d);
+                            p.setTpe_kursi(e);
 //                            p.setBlock(f);
-                        p.setJum_kursi(g);
-                        p.setTgl_pertandingan(String.valueOf(k.getTgl()).substring(0, 10));
-                        p.simpan(p);
+                            p.setJum_kursi(g);
+                            p.setTgl_pertandingan(k.getTgl().substring(0, 11));
+                            p.simpan(p);
+                            session.setAttribute("kode", p.getKode_booking());
+                            response.sendRedirect("BuktiBooking.jsp");
+                        }
+
                     %>
                 </div>
 

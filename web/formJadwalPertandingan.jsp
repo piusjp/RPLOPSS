@@ -136,7 +136,7 @@
                 <li><a href='home.jsp'><span>Home</span></a></li>
                 <li class='active'><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
                 <li ><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
-                <li class='last'><a href='#'><span>Jalur Terpendek</span></a></li>
+                <li class='last'><a href='#'><span title="Konfirmasi Pembayaran Tiket">Konfirmasi</span></a></li>
             </ul>
         </div>
         <div class="top">
@@ -146,7 +146,7 @@
         <form>
             <div class="frame">
                 <div>
-                    <p></p>
+                    <h2>&nbsp&nbsp&nbsp&nbsp&nbsp</h2>
                     <!--                <table align="center">
                                         <tr>
                                             <td>Bulan

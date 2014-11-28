@@ -39,7 +39,7 @@ public class controlBuatJadwal extends HttpServlet {
         j.setStatus_main("belum");
         j.setUrl("url");
         try {
-            j.setTgl(java.sql.Date.valueOf(tglPertandingan));
+            j.setTgl(tglPertandingan);
             j.buatJadwal(j);
         } catch (SQLException ex) {
             Logger.getLogger(controlBuatJadwal.class.getName()).log(Level.SEVERE, null, ex);

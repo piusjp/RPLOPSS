@@ -121,7 +121,7 @@
                     <li class='active'><a href='home.jsp'title="Logo PSS"><span>Home</span></a></li>
                     <li><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
                     <li><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
-                    <li><a href='#'><span>Jalur Terpendek</span></a></li>
+                    <li><a href='#'><span title="Konfirmasi Pembayaran Tiket">Konfirmasi</span></a></li>
                     <li class='last'><a <%
                         if (session.getAttribute("username") != null) {
                             %>href='formOp.jsp'>
