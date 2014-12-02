@@ -37,6 +37,7 @@ public class testpius {
         SimpleDateFormat format2 = new SimpleDateFormat("dd-MMM-yy");
         java.util.Date date = format1.parse("2014-12-10");
         System.out.println(format2.format(date));
+        System.out.println(java.sql.Date.valueOf(format2.format(date)));
 
     }
 }

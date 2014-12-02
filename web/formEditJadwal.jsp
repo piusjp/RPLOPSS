@@ -5,10 +5,12 @@
 --%>
 
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.penjadwalan.Jadwal"%>
 <a href="formJadwalPertandingan.jsp"></a>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="edit" scope="application" class="com.penjadwalan.Jadwal"/>
 <!DOCTYPE html>
 <html>
     <link href="Logo_PSS.png" rel="shortcut icon">
@@ -151,52 +153,53 @@
                 <p></p>
             </div>
             <div>
-                <h1>Pilih Jadwal yang akan Diubah</h1>
-                <form action="formLoadPilihan" method="post">
-                    <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
-                        <tr bgcolor="#2CF936" align="conter">
-                            <td>Tanggal</td>
-                            <td>Jam</td>
-                            <td>Home</td>
-                            <td>Vs</td>
-                            <td>Away</td>
-                            <td>      </td>
-                        </tr>
-                        <%if (request.getAttributeNames().equals("lihat")) {
-                                Jadwal j = new Jadwal();
-                                List<Jadwal> k = j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
-                                for (int i = 0; i < k.size(); i++) {
-                        %>
-                        <tr bgcolor="#FFEBCD">
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                        </tr>
-
-
-                        <% }
-                        } else {
+                <h1>Pilih Jadwal yang akan Diubah </h1>
+                <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
+                    <tr bgcolor="#2CF936" align="conter">
+                        <td>Tanggal</td>
+                        <td>Jam</td>
+                        <td>Home</td>
+                        <td>Vs</td>
+                        <td>Away</td>
+                        <td>      </td>
+                    </tr>
+                    <%if (request.getAttributeNames().equals("lihat")) {
                             Jadwal j = new Jadwal();
-                            List<Jadwal> jad = j.tampilJadwal();
-                            for (int i = 0; i < jad.size(); i++) {%>
-                        <tr bgcolor="#FFEBCD">
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                            <td><input type="submit" value="Pilih"/></td>
-                        </tr>
-                        <%}
-                        }%>
-                    </table>
-                </form>
-                <br/>
-                <br/>
+                            List<Jadwal> k = j.tampilJadwal(request.getParameter("bulan"), request.getParameter("tahun"));
+                            for (int i = 0; i < k.size(); i++) {
+                    %>
+                    <tr bgcolor="#FFEBCD">
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(k.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    </tr>
+
+
+                    <% }
+                    } else {
+                        Jadwal j = new Jadwal();
+                        List<Jadwal> jad = j.tampilJadwal();
+                        for (int i = 0; i < jad.size(); i++) {%>
+                    <tr bgcolor="#FFEBCD">
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(String.valueOf(jad.get(i).getTgl()).substring(0, 10)); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getJam()); %>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(jad.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td>
+                            <form action="formEditJadwal.jsp" method="post">
+                                <input type="hidden" name="tanggal" value="<%=String.valueOf(jad.get(i).getTgl()).substring(0, 10)%>"/>
+                                <input type="submit" value="Pilih"/>
+                            </form>
+                        </td>
+                    </tr>
+                    <%}
+                            }%>
+                </table>
                 <h1>Masukan Perubahan Jadwal</h1>
-                <form action="controlBuatJadwal" method="post">
+                <form action="controlEditJadwal" method="post">
                     <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
                         <tr bgcolor="#2CF936" align="conter">
                             <td>Tanggal</td>
@@ -205,14 +208,23 @@
                             <td>Vs</td>
                             <td>Away</td>
                         </tr>
+                        <%
+                            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                            SimpleDateFormat format2 = new SimpleDateFormat("dd-MMM-yy");
+                            java.util.Date date = format1.parse(request.getParameter("tanggal"));
+                            String tgl=format2.format(date).toString();
+                            if(request.getParameter("tanggal")==null){
+                                tgl="10-dec-14";
+                            }
+                        %>
                         <tr>
-                            <td><input type="text" name="tanggal"/></td>
-                            <td><input type="text" name="jam"/></td>
+                            <td><input type="text" name="tanggal" value="<%=tgl%>"/></td>
+                            <td><input type="text" name="jam" value="<%=edit.search(tgl, "jam")%>"/></td>
                             <td>PSS Sleman</td>
                             <td>VS</td>
-                            <td><input type="text" name="away"/></td>
+                            <td><input type="text" name="away" value="<%=edit.search(tgl, "lawan")%>"/></td>
                         </tr>
-                        <td><input type="submit" value="Tambah"/></td>
+                        <td><input type="submit" value="Ubah"/></td>
                     </table>
                 </form>
             </div>

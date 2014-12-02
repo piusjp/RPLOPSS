@@ -8,6 +8,10 @@
         <servlet-name>controlBuatJadwal</servlet-name>
         <servlet-class>com.penjadwalan.controlBuatJadwal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controlEditJadwal</servlet-name>
+        <servlet-class>com.penjadwalan.controlEditJadwal</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlSI</servlet-name>
         <url-pattern>/controlSI</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>controlBuatJadwal</servlet-name>
         <url-pattern>/controlBuatJadwal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlEditJadwal</servlet-name>
+        <url-pattern>/controlEditJadwal</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
