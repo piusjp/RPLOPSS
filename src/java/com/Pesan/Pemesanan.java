@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -201,14 +200,14 @@ public class Pemesanan {
         ResultSet r = s.executeQuery(sql);
         while (r.next()) {
             h.setBlock(r.getString("id_block"));
-            h.setNama("nama");
-            h.setId_pemesanan("id_pemesan");
-            h.setHarga("harga");
-            h.setJum_kursi("jum_kursi");
-            h.setKode_booking("kode_booking");
-            h.setTpe_kursi("tipe_kursi");
-            h.setTelp("telp");
-            h.setTgl_pertandingan("tgl_pertandingan");
+            h.setNama(r.getString("nama"));
+            h.setId_pemesanan(r.getString("id_pemesan"));
+            h.setHarga(r.getString("harga"));
+            h.setJum_kursi(r.getString("jum_kursi"));
+            h.setKode_booking(r.getString("kode_booking"));
+            h.setTpe_kursi(r.getString("tipe_kursi"));
+            h.setTelp(r.getString("telp"));
+            h.setTgl_pertandingan(r.getString("tgl_pertandingan"));
         }
         conn.commit();
         return h;

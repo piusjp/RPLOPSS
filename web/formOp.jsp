@@ -115,8 +115,8 @@
             <ul>
                 <li class='active'><a href='formOp.jsp'><span>Home</span></a></li>
                 <li><a href='formBuatJadwal.jsp'><span>Buat Jadwal Pertandingan</span></a></li>
-                <li><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
-                <li><a href='#'><span>Laporan Satu Musim</span></a></li>
+<!--                <li><a href='formEditJadwal.jsp'><span>Update Jadwal Pertandingan</span></a></li>
+                <li><a href='#'><span>Laporan Satu Musim</span></a></li>-->
                 <li class='last'><a href="home.jsp"<%
                     session.removeAttribute("username");
                                     %> ><span>Logout</span></a> </li>

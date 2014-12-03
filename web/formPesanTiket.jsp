@@ -139,10 +139,10 @@
 
         <div id='cssmenu'>
             <ul>
-                <li><a href='home.jsp'><span>Home</span></a></li>
-                <li><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
-                <li class='active'><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
-                <li class='last'><a href='#'><span title="Konfirmasi Pembayaran Tiket">Konfirmasi</span></a></li>
+                <li><a href='home.jsp'><span title="Halaman Home">Home</span></a></li>
+                <li><a href='formJadwalPertandingan.jsp'><span title="Halaman Jadwal Pertandingan">Jadwal Pertandingan</span></a></li>
+                <li class='active'><a href='formPesanTiket.jsp'><span title="Halaman Pesan Tiket">Pesan Tiket</span></a></li>
+                <li class='last'><a href='Help.jsp'><span title="Halaman Help">Help</span></a></li>
             </ul>
         </div>
         <div class="leftSlide4">
@@ -248,30 +248,30 @@
                             </td>
                         </tr>
 
-                    </table>
-                    <%                            String a = request.getParameter("id_ktp");
-                        String b = request.getParameter("nama");
-                        String c = request.getParameter("No_Telp");
-                        String d = request.getParameter("tgl_pertandingan");
-                        String e = request.getParameter("tipe_kursi");
-//                        String f = request.getParameter("block");
-                        String g = request.getParameter("jumlah");
-                        if (a != null) {
-                            Pemesanan p = new Pemesanan();
-                            p.setId_pemesanan(a);
-                            p.setNama(b);
-                            p.setTelp(c);
-                            p.setTgl_pertandingan(d);
-                            p.setTpe_kursi(e);
-//                            p.setBlock(f);
-                            p.setJum_kursi(g);
-                            p.setTgl_pertandingan(k.getTgl().substring(0, 11));
-                            p.simpan(p);
-                            session.setAttribute("kode", p.getKode_booking());
-                            response.sendRedirect("BuktiBooking.jsp");
-                        }
+                    </table><h3>
+                        <%                            String a = request.getParameter("id_ktp");
+                            String b = request.getParameter("nama");
+                            String c = request.getParameter("No_Telp");
+                            String d = request.getParameter("tgl_pertandingan");
+                            String e = request.getParameter("tipe_kursi");
+    //                        String f = request.getParameter("block");
+                            String g = request.getParameter("jumlah");
+                            if (a != null) {
+                                Pemesanan p = new Pemesanan();
+                                p.setId_pemesanan(a);
+                                p.setNama(b);
+                                p.setTelp(c);
+                                p.setTgl_pertandingan(d);
+                                p.setTpe_kursi(e);
+    //                            p.setBlock(f);
+                                p.setJum_kursi(g);
+                                p.setTgl_pertandingan(k.getTgl().substring(0, 11));
+                                p.simpan(p);
+                                session.setAttribute("kode", p.getKode_booking());
+                                response.sendRedirect("BuktiBooking.jsp");
+                            }
 
-                    %>
+                        %></h3>
                 </div>
 
             </form>

@@ -1,11 +1,11 @@
 <%-- 
-    Document   : home
-    Created on : Nov 19, 2014, 4:25:47 AM
+    Document   : Help
+    Created on : Nov 27, 2014, 9:29:33 PM
     Author     : Yosua Astutakari
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <link href="Logo_PSS.png" rel="shortcut icon">
     <style>
@@ -118,34 +118,37 @@
 
             <div id='cssmenu'>
                 <ul>
-                    <li class='active'><a href='home.jsp'title="Logo PSS"><span title="Halaman Home">Home</span></a></li>
+                    <li ><a href='home.jsp'title="Logo PSS"><span title="Halaman Home">Home</span></a></li>
                     <li><a href='formJadwalPertandingan.jsp'><span title="Halaman Jadwal Pertandingan">Jadwal Pertandingan</span></a></li>
-                    <li><a href='formPesanTiket.jsp'><span title="Halaman Pesan Tiket">Pesan Tiket</span></a></li>
-                    <li><a href='Help.jsp'><span title="halaman Help">Help</span></a></li>
-                    <li class='last'><a <%
-                        if (session.getAttribute("username") != null) {
-                            %>href='formOp.jsp'>
-                            <%} else {
-                            %>                        
-                            href='formLoginOp.jsp'>
-                            <% }%><span>Login Operator</span></a></li>
-
+                    <li><a href='formPesanTiket.jsp'><span title="halaman Pesan Tiket">Pesan Tiket</span></a></li>
+                    <li class="active"><a href='Help.jsp'><span title="Help">Help</span></a></li>
                 </ul>
             </div>
-            <div class="leftSlide" align="justify">
-                <div class="left">
-                    <img src="img/Logo_PSS.png" width="150px" height="150px">    
-                </div>
-                <div class="leftSlide1">
-                    <span style="color: #ffffff;">
-                        Perserikatan Sepak bola Sleman (biasa disingkat: PSS) merupakan sebuah tim sepak bola yang berbasis di Kabupaten Sleman, Daerah Istimewa Yogyakarta, Indonesia. Tim yang didirikan pada 20 Mei 1976 ini merupakan salah satu tim sepak bola yang disegani di Indonesia dan memiliki julukan sebagai tim Super Elang Jawa atau Super Elja. Tim ini juga sering disebut dengan julukan Laskar Sembada. Mereka bermain di Divisi Utama dalam sebuah kompetisi sepak bola Indonesia, Liga Indonesia. Prestasi tertingginya dalam kompetisi kasta tertinggi Liga Indonesia adalah dua tahun berturut-turut menempati empat besar pada Divisi Utama Liga Indonesia 2003 dan Divisi Utama Liga Indonesia 2004. Stadion utama mereka adalah Stadion Maguwoharjo, dan menggunakan Stadion Tridadi sebagai stadion kedua. PSS juga memiliki supporter fanatik yakni Slemania dan Brigata Curva Sud (BCS X PSS 1976)
-                    </span>
+            <div>
+                <h2>1. Pesan tiket</h2>
+                <p>a. tekan menu Pesan Tiket </p>
+                <p><img src="help/1.PNG">
+                </p>
+                <p>b. kemudian isikan field yang ada. Id Ktp : 16 digit angka, nama :carakter string, Nomor telp : berisi maximal 12 digit angka, tipe kursi : VVIP, VIP, STANDARD dan jumlah : angka </p>
+                <p><img src="help/2.PNG"> </p>
+                <p>c. kemudian tekan tombol pesan</p>
+                <h2>2. Login Operator</h2>
+                <p>a. tekan menu Home </p>
+                <p><img src="help/3.PNG">
+                </p>
+                <p>b. Tekan menu Login Operator</p>
+                <p>c. Login berdasarkan Username dan Password</p>
+                <p><img src="help/4.PNG"></p>
+                <p>d. Kemudian tekan tombol submit</p>
+                <p>e. maka akan muncul tampilan seperti dibawah ini </p>
+                <p><img src="help/5.PNG"></p>
+                <h2>3. Pembuatan Jadwal Baru </h2>
+                <p>a. tekan menu buat pesan</p>
+                <p><img src="help/6.PNG"></p>
+                <p>b. Kemudian isikan semua field yang berhubungan dengan pertandingan tgl : memiliki format "dd-MON-yyyy" jam : berformat string, Away : Lawan yang akan dihadapi</p>
+                <p><img src="help/7.PNG"></p>
+                <p>c. Kemudian tekan tombol tambah untuk menambahnya </p>
+            </div>
 
-                </div>
-            </div>
-            <div class="leftSlide2">
-                <img src="img/pssawal.jpg" width="1365px"height="400px">
-            </div>
         </body>
     </html>
-    

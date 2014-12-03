@@ -133,10 +133,10 @@
 
         <div id='cssmenu'>
             <ul>
-                <li><a href='home.jsp'><span>Home</span></a></li>
-                <li class='active'><a href='formJadwalPertandingan.jsp'><span>Jadwal Pertandingan</span></a></li>
-                <li ><a href='formPesanTiket.jsp'><span>Pesan Tiket</span></a></li>
-                <li class='last'><a href='#'><span title="Konfirmasi Pembayaran Tiket">Konfirmasi</span></a></li>
+                <li><a href='home.jsp'><span title="Halaman Home">Home</span></a></li>
+                <li class='active'><a href='formJadwalPertandingan.jsp'><span title="Halaman Jadwal Pertandingan">Jadwal Pertandingan</span></a></li>
+                <li ><a href='formPesanTiket.jsp'><span title="Halaman Pesan Tiket">Pesan Tiket</span></a></li>
+                <li><a href='#'><span title="Halaman Help">Help</span></a></li>
             </ul>
         </div>
         <div class="top">

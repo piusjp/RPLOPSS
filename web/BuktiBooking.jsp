@@ -59,52 +59,52 @@
                 Pemesanan i = new Pemesanan();
                 i = p.lihatPesan(s);
             %>
-            <table>
-                <tr>
-                    <td>Informasi Pembeli</td><td></td><td></td>
-                </tr>
-                <tr>
-                    <td>Nama</td>
-                    <td>:</td>
-                    <td><% out.print(i.getNama()); %></td>
-                </tr>
-                <tr>
-                    <td>Id KTP Pembeli</td>
-                    <td>:</td>
-                    <td><% out.print(i.getId_pemesanan()); %></td>
-                </tr>
-                <tr>
-                    <td>No Telpon</td>
-                    <td>:</td>
-                    <td><% out.print(i.getTelp()); %></td>
-                </tr>
-                <tr><td></td><td></td><td></td></tr>
-                <tr>
-                    <td>Informasi Tiket</td><td></td><td></td>
-                </tr>
-                <tr>
-                    <td>Kode Booking</td>
-                    <td>:</td>
-                    <td><% out.print(i.getKode_booking()); %></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Tiket</td>
-                    <td>:</td>
-                    <td><% out.print(i.getJum_kursi()); %></td>
-                </tr>
-                <tr>
-                    <td>Harga Tiket</td>
-                    <td>:</td>
-                    <td><% out.print(i.getHarga());%></td>
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td></td><td></td><td><input type="submit" value="Back"
-                                                 <% response.sendRedirect("formPesanTiket.jsp");
-                                                     session.removeAttribute("kode");
-                                                 %>></td>
-                </tr>
-            </table>
+            <div align="center"> <table>
+                    <tr>
+                        <td>Informasi Pembeli</td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td><% out.print(i.getNama()); %></td>
+                    </tr>
+                    <tr>
+                        <td>Id KTP Pembeli</td>
+                        <td>:</td>
+                        <td><% out.print(i.getId_pemesanan()); %></td>
+                    </tr>
+                    <tr>
+                        <td>No Telpon</td>
+                        <td>:</td>
+                        <td><% out.print(i.getTelp()); %></td>
+                    </tr>
+                    <tr><td></td><td></td><td></td></tr>
+                    <tr>
+                        <td>Informasi Tiket</td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>Kode Booking</td>
+                        <td>:</td>
+                        <td><% out.print(i.getKode_booking()); %></td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah Tiket</td>
+                        <td>:</td>
+                        <td><% out.print(i.getJum_kursi()); %></td>
+                    </tr>
+                    <tr>
+                        <td>Harga Tiket</td>
+                        <td>:</td>
+                        <td>RP <% out.print(i.getHarga());%>,-</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td></td><td></td><td><a href="formPesanTiket.jsp"><input type="submit" value="Back">
+                                <% session.removeAttribute("kode");
+                                %></a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>
