@@ -10,8 +10,7 @@
 <a href="formJadwalPertandingan.jsp"></a>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <link href="Logo_PSS.png" rel="shortcut icon">
+<html> <link href="Logo_PSS.png" rel="shortcut icon">
     <style>
         #imag asd{
             display: block;
@@ -137,6 +136,15 @@
                 <li class='active'><a href='formJadwalPertandingan.jsp'><span title="Halaman Jadwal Pertandingan">Jadwal Pertandingan</span></a></li>
                 <li ><a href='formPesanTiket.jsp'><span title="Halaman Pesan Tiket">Pesan Tiket</span></a></li>
                 <li><a href='#'><span title="Halaman Help">Help</span></a></li>
+                <li ><a href="LihatJalurTerpendek.jsp"><span title="halaman lihat jalur terpendek">Lihat Jalur Terpendek</span></a></li>
+                <li class='last'><a <%
+                    if (session.getAttribute("username") != null) {
+                        %>href='formOp.jsp'>
+                        <%} else {
+                        %>                        
+                        href='formLoginOp.jsp'>
+                        <% }%><span>Login Operator</span></a></li>
+
             </ul>
         </div>
         <div class="top">

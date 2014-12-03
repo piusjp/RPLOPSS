@@ -1,6 +1,6 @@
 <%-- 
-    Document   : home
-    Created on : Nov 19, 2014, 4:25:47 AM
+    Document   : LihatJalurTerpendek
+    Created on : Dec 3, 2014, 6:39:20 AM
     Author     : Yosua Astutakari
 --%>
 
@@ -114,15 +114,15 @@
 
         </head>
 
-        <body>
+        <body bgcolor="#555555">
 
             <div id='cssmenu'>
                 <ul>
-                    <li class='active'><a href='home.jsp'title="Logo PSS"><span title="Halaman Home">Home</span></a></li>
+                    <li><a href='home.jsp'title="Logo PSS"><span title="Halaman Home">Home</span></a></li>
                     <li><a href='formJadwalPertandingan.jsp'><span title="Halaman Jadwal Pertandingan">Jadwal Pertandingan</span></a></li>
                     <li><a href='formPesanTiket.jsp'><span title="Halaman Pesan Tiket">Pesan Tiket</span></a></li>
                     <li><a href='Help.jsp'><span title="halaman Help">Help</span></a></li>
-                    <li><a href="LihatJalurTerpendek.jsp"><span title="halaman lihat jalur terpendek">Lihat Jalur Terpendek</span></a></li>
+                    <li  class='active'><a href="LihatJalurTerpendek.jsp"><span title="halaman lihat jalur terpendek">Lihat Jalur Terpendek</span></a></li>
                     <li class='last'><a <%
                         if (session.getAttribute("username") != null) {
                             %>href='formOp.jsp'>
@@ -132,20 +132,6 @@
                             <% }%><span>Login Operator</span></a></li>
 
                 </ul>
-            </div>
-            <div class="leftSlide" align="justify">
-                <div class="left">
-                    <img src="img/Logo_PSS.png" width="150px" height="150px">    
-                </div>
-                <div class="leftSlide1">
-                    <span style="color: #ffffff;">
-                        Perserikatan Sepak bola Sleman (biasa disingkat: PSS) merupakan sebuah tim sepak bola yang berbasis di Kabupaten Sleman, Daerah Istimewa Yogyakarta, Indonesia. Tim yang didirikan pada 20 Mei 1976 ini merupakan salah satu tim sepak bola yang disegani di Indonesia dan memiliki julukan sebagai tim Super Elang Jawa atau Super Elja. Tim ini juga sering disebut dengan julukan Laskar Sembada. Mereka bermain di Divisi Utama dalam sebuah kompetisi sepak bola Indonesia, Liga Indonesia. Prestasi tertingginya dalam kompetisi kasta tertinggi Liga Indonesia adalah dua tahun berturut-turut menempati empat besar pada Divisi Utama Liga Indonesia 2003 dan Divisi Utama Liga Indonesia 2004. Stadion utama mereka adalah Stadion Maguwoharjo, dan menggunakan Stadion Tridadi sebagai stadion kedua. PSS juga memiliki supporter fanatik yakni Slemania dan Brigata Curva Sud (BCS X PSS 1976)
-                    </span>
-
-                </div>
-            </div>
-            <div class="leftSlide2">
-                <img src="img/pssawal.jpg" width="1365px"height="400px">
             </div>
         </body>
     </html>
