@@ -243,4 +243,27 @@ public class Pemesanan {
     public void setKode_booking(String kode_booking) {
         this.kode_booking = kode_booking;
     }
+
+    public String lihatGate(String kode, String tipe) throws SQLException {
+        String a = lihatBlock(kode);
+        String sql = "select gate from block where id_block like '" + a + "' and tipe_kursi like '" + tipe + "'";
+        Statement s = conn.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        String h = "";
+        while (r.next()) {
+            h = r.getString("gate");
+        }
+        return h;
+    }
+
+    private String lihatBlock(String kode) throws SQLException {
+        String sql = "select id_block from pemesanan where kode_booking like '" + kode + "'";
+        Statement s = conn.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        String h = "";
+        while (r.next()) {
+            h = r.getString("id_block");
+        }
+        return h;
+    }
 }
