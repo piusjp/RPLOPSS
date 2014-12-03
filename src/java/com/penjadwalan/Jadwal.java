@@ -163,33 +163,20 @@ public class Jadwal {
         }
     }
 
-    public void updateJadwal(Jadwal dataJadwal, String tgl) throws SQLException {
-        PreparedStatement pstmt = null;
+    public void updateJadwal(String tgl,String lawan,String jam,String param) throws SQLException {
         try {
             conn.setAutoCommit(false);
-            String sql = "update jadwal set tgl_pertandingan=?, lawan=?, jam=? where tgl_pertandingan = to_date('" + tgl + "','dd-mm-yyyy')";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, dataJadwal.getTgl());
-            pstmt.setString(2, dataJadwal.getLawan());
-            pstmt.setString(3, dataJadwal.getJam());
-            pstmt.executeUpdate();
+            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String query = "update jadwal set tgl_pertandingan='" + tgl + "', lawan='" + lawan + "', jam='" + jam + "' where tgl_pertandingan = '"+param+"'";
             UpdateBelum();
             UpdateSudah();
+            stmt.executeQuery(query);
             conn.commit();
             System.out.println("Tambah Data Jadwal Berhasil");
         } catch (SQLException exception) {
             conn.rollback();
             System.out.println("Tambah Data Jadwal Pertandingan gagal = " + exception.getMessage());
             throw exception;
-        } finally {
-            try {
-                conn.setAutoCommit(true);
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (SQLException exception) {
-                throw exception;
-            }
         }
     }
 

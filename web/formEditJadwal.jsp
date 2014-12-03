@@ -153,7 +153,6 @@
                 <p></p>
             </div>
             <div>
-                <h1>Pilih Jadwal yang akan Diubah </h1>
                 <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
                     <tr bgcolor="#2CF936" align="conter">
                         <td>Tanggal</td>
@@ -161,7 +160,7 @@
                         <td>Home</td>
                         <td>Vs</td>
                         <td>Away</td>
-                        <td>      </td>
+                        <td></td>
                     </tr>
                     <%if (request.getAttributeNames().equals("lihat")) {
                             Jadwal j = new Jadwal();
@@ -174,6 +173,7 @@
                         <td>&nbsp&nbsp&nbsp&nbsp&nbspPSS SLEMAN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
                         <td>&nbsp&nbsp&nbsp&nbsp&nbspVS&nbsp&nbsp&nbsp&nbsp&nbsp</td>
                         <td>&nbsp&nbsp&nbsp&nbsp&nbsp<% out.print(k.get(i).getLawan());%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+
                     </tr>
 
 
@@ -196,9 +196,11 @@
                         </td>
                     </tr>
                     <%}
-                            }%>
+                        }%>
                 </table>
-                <h1>Masukan Perubahan Jadwal</h1>
+                <br/>
+                <br/>
+                <h1>Masukan Jadwal</h1>
                 <form action="controlEditJadwal" method="post">
                     <table align="center" border="1" title="Tabel Jadwal Pertandingan selama satu musim">
                         <tr bgcolor="#2CF936" align="conter">
@@ -207,24 +209,31 @@
                             <td>Home</td>
                             <td>Vs</td>
                             <td>Away</td>
+                            <td></td>
                         </tr>
                         <%
-                            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-                            SimpleDateFormat format2 = new SimpleDateFormat("dd-MMM-yy");
-                            java.util.Date date = format1.parse(request.getParameter("tanggal"));
-                            String tgl=format2.format(date).toString();
-                            if(request.getParameter("tanggal")==null){
-                                tgl="10-dec-14";
+                            String tgl;
+                            try {
+                                SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                                SimpleDateFormat format2 = new SimpleDateFormat("dd-MMM-yy");
+                                java.util.Date date = format1.parse(request.getParameter("tanggal"));
+                                tgl = format2.format(date).toString();
+                                if (request.getParameter("tanggal") == null) {
+                                    tgl = "30-dec-14";
+                                }
+                            } catch (Exception ex) {
+                                tgl = "30-DEC-14";
                             }
                         %>
                         <tr>
                             <td><input type="text" name="tanggal" value="<%=tgl%>"/></td>
-                            <td><input type="text" name="jam" value="<%=edit.search(tgl, "jam")%>"/></td>
+                            <td><input type="text" name="jam" value="<%=edit.search(tgl, "jam")%>"/>
+                            <input type="hidden" name="param" value="<%=edit.search(tgl, "lawan")%>"/></td>
                             <td>PSS Sleman</td>
                             <td>VS</td>
                             <td><input type="text" name="away" value="<%=edit.search(tgl, "lawan")%>"/></td>
+                            <td><input type="submit" value="Ubah"/></td>
                         </tr>
-                        <td><input type="submit" value="Ubah"/></td>
                     </table>
                 </form>
             </div>

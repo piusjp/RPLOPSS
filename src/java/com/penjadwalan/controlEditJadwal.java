@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import oracle.sql.DATE;
 
 /**
  *
@@ -33,18 +34,13 @@ public class controlEditJadwal extends HttpServlet {
         String tglPertandingan = request.getParameter("tanggal");
         String lawan = request.getParameter("away");
         String jam = request.getParameter("jam");
-        j.setJam(jam);
-        j.setLawan(lawan);
-        j.setStatus_main("belum");
-        j.setUrl("url");
+        String param = request.getParameter("tanggal");
         try {
-            j.setTgl(java.sql.Date.valueOf(tglPertandingan));
-            j.UpdateBelum();
+            j.updateJadwal(tglPertandingan,lawan,jam,param);
         } catch (SQLException ex) {
             Logger.getLogger(controlBuatJadwal.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.getRequestDispatcher("/formEditJadwal.jsp").forward(request, response);
-        
     }
 
     @Override
