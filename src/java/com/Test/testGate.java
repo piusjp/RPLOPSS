@@ -16,7 +16,7 @@ public class testGate {
 
     public static void main(String[] args) throws SQLException {
         Pemesanan p = new Pemesanan();
-        String a = p.lihatGate("201411272781973", "VVIP");
+        String a = p.lihatGate("201411272781973");
         System.out.println(a);
     }
 }

@@ -244,9 +244,11 @@ public class Pemesanan {
         this.kode_booking = kode_booking;
     }
 
-    public String lihatGate(String kode, String tipe) throws SQLException {
-        String a = lihatBlock(kode);
-        String sql = "select gate from block where id_block like '" + a + "' and tipe_kursi like '" + tipe + "'";
+    public String lihatGate(String kode) throws SQLException {
+        Pemesanan as=new Pemesanan();
+        as.setBlock(lihatBlock(kode).getBlock());
+        as.setTpe_kursi(lihatBlock(kode).getTpe_kursi());
+        String sql = "select gate from block where id_block like '" + as.getBlock() + "' and tipe_kursi like '" + as.getTpe_kursi() + "'";
         Statement s = conn.createStatement();
         ResultSet r = s.executeQuery(sql);
         String h = "";
@@ -256,13 +258,14 @@ public class Pemesanan {
         return h;
     }
 
-    private String lihatBlock(String kode) throws SQLException {
-        String sql = "select id_block from pemesanan where kode_booking like '" + kode + "'";
+    private Pemesanan lihatBlock(String kode) throws SQLException {
+        String sql = "select id_block, tipe_kursi from pemesanan where kode_booking like '" + kode + "'";
         Statement s = conn.createStatement();
         ResultSet r = s.executeQuery(sql);
-        String h = "";
+        Pemesanan h =new Pemesanan();
         while (r.next()) {
-            h = r.getString("id_block");
+            h.setBlock(r.getString("id_block"));
+            h.setTpe_kursi(r.getString("tipe_kursi"));
         }
         return h;
     }
