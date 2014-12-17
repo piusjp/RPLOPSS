@@ -147,6 +147,22 @@ public class Pemesanan {
         return kode_booking;
     }
 
+    public boolean konfirmasiBayar(String kbayar, String kbooking) throws SQLException {
+        Statement s = conn.createStatement();
+        String sql = "select * from pemesanan where kode_booking like '" + kbooking + "' and kode_bayar like '" + kbayar + "'";
+        ResultSet r = s.executeQuery(sql);
+        String h = "";
+        while (r.next()) {
+            h = r.getString("");
+        }
+        if (h == null) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
     private String getHarga(String asd) throws SQLException {
         Statement s = conn.createStatement();
         String h = "";
@@ -169,10 +185,10 @@ public class Pemesanan {
         String k = getHarga(p.getTpe_kursi());
         long a = Long.parseLong(k) * Long.parseLong(p.getJum_kursi());
         String sql = "insert into pemesanan(id_pemesan,telp,nama,tgl_pertandingan,"
-                + "tipe_kursi,jum_kursi,status_bayar,kode_booking,id_block,harga) "
+                + "tipe_kursi,jum_kursi,status_bayar,kode_booking,id_block,harga,tgl_pesan) "
                 + "values(" + p.getId_pemesanan() + "," + p.getTelp() + ",'" + p.getNama() + "','" + p.getTgl_pertandingan()
                 + "','" + p.getTpe_kursi() + "'," + p.getJum_kursi() + "," + 0 + ",'"
-                + p.getKode_booking() + "','" + b + "'," + a + ")";
+                + p.getKode_booking() + "','" + b + "'," + a + ",sysdate)";
         Statement stat = conn.createStatement();
         stat.executeUpdate(sql);
 //        conn.close();
@@ -244,8 +260,24 @@ public class Pemesanan {
         this.kode_booking = kode_booking;
     }
 
+    private String lihatStatusBayar(String kode) throws SQLException {
+        String sql = "select status_bayar from pemesanan where kode_booking like '" + kode + "'";
+        Statement s = conn.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        String h = "";
+        while (r.next()) {
+            h = r.getString("status_bayar");
+        }
+        return h;
+    }
+
+    public void konfirmasiPembayaran(String kode, String bayar) {
+        String sql = "update pemesanan set status_bayar=1 where kode like '" + kode + "'";
+
+    }
+
     public String lihatGate(String kode) throws SQLException {
-        Pemesanan as=new Pemesanan();
+        Pemesanan as = new Pemesanan();
         as.setBlock(lihatBlock(kode).getBlock());
         as.setTpe_kursi(lihatBlock(kode).getTpe_kursi());
         String sql = "select gate from block where id_block like '" + as.getBlock() + "' and tipe_kursi like '" + as.getTpe_kursi() + "'";
@@ -255,14 +287,18 @@ public class Pemesanan {
         while (r.next()) {
             h = r.getString("gate");
         }
-        return h;
+        if (lihatStatusBayar(kode).equals("0")) {
+            return "belum";
+        } else {
+            return h;
+        }
     }
 
     private Pemesanan lihatBlock(String kode) throws SQLException {
         String sql = "select id_block, tipe_kursi from pemesanan where kode_booking like '" + kode + "'";
         Statement s = conn.createStatement();
         ResultSet r = s.executeQuery(sql);
-        Pemesanan h =new Pemesanan();
+        Pemesanan h = new Pemesanan();
         while (r.next()) {
             h.setBlock(r.getString("id_block"));
             h.setTpe_kursi(r.getString("tipe_kursi"));

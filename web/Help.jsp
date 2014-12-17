@@ -122,6 +122,16 @@
                     <li><a href='formJadwalPertandingan.jsp'><span title="Halaman Jadwal Pertandingan">Jadwal Pertandingan</span></a></li>
                     <li><a href='formPesanTiket.jsp'><span title="halaman Pesan Tiket">Pesan Tiket</span></a></li>
                     <li class="active"><a href='Help.jsp'><span title="Help">Help</span></a></li>
+                    <li><a href="LihatJalurTerpendek.jsp"><span title="halaman lihat jalur terpendek">Lihat Jalur Terpendek</span></a></li>
+                    <li><a href="konfirmasiPembayaran.jsp"><span title="halaman konfirmasi Pembayaran">Konfirmasi</span></a></li>
+                    <li class='last'><a <%
+                        if (session.getAttribute("username") != null) {
+                            %>href='formOp.jsp'>
+                            <%} else {
+                            %>                        
+                            href='formLoginOp.jsp'>
+                            <% }%><span>Login Operator</span></a></li>
+
                 </ul>
             </div>
             <div>

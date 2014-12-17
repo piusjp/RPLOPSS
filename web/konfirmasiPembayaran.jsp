@@ -1,6 +1,6 @@
 <%-- 
-    Document   : LihatJalurTerpendek
-    Created on : Dec 3, 2014, 6:39:20 AM
+    Document   : konfirmasiPembayaran
+    Created on : Dec 8, 2014, 10:12:08 PM
     Author     : Yosua Astutakari
 --%>
 
@@ -130,8 +130,8 @@
                 <li><a href='formJadwalPertandingan.jsp'><span title="Halaman Jadwal Pertandingan">Jadwal Pertandingan</span></a></li>
                 <li><a href='formPesanTiket.jsp'><span title="Halaman Pesan Tiket">Pesan Tiket</span></a></li>
                 <li><a href='Help.jsp'><span title="halaman Help">Help</span></a></li>
-                <li  class='active'><a href="LihatJalurTerpendek.jsp"><span title="halaman lihat jalur terpendek">Lihat Jalur Terpendek</span></a></li>
-                <li><a href="konfirmasiPembayaran.jsp"><span title="halaman konfirmasi Pembayaran">Konfirmasi</span></a></li>
+                <li><a href="LihatJalurTerpendek.jsp"><span title="halaman lihat jalur terpendek">Lihat Jalur Terpendek</span></a></li>
+                <li  class='active'><a href="konfirmasiPembayaran.jsp"><span title="halaman konfirmasi Pembayaran">Konfirmasi</span></a></li>
                 <li class='last'><a <%
                     if (session.getAttribute("username") != null) {
                         %>href='formOp.jsp'>
@@ -142,8 +142,8 @@
             </ul>
         </div>
         <div class="slide">
-            <form action="" method="post">
-                <h2 align="center">Form Lihat Jalur terpendek</h2>
+            <h2 align="center">Konfirmasi Pembayaran</h2>
+            <form action=""method="post">
                 <table align="center">
                     <tr>
                         <td>Kode Booking</td>
@@ -151,32 +151,31 @@
                         <td><input type="input" name="kode_booking" title="kode booking yang berisi 15 digit yang telah diberikan"></td>
                     </tr>
                     <tr>
-                        <td>&nbsp</td>
-                        <td>&nbsp</td>
-                        <td>&nbsp</td>
+                        <td>Kode Pembayaran</td>
+                        <td>&nbsp:&nbsp</td>
+                        <td><input type="input" name="kode_pembayaran" title="kode pembayaran yang berisi 13 digit yang telah diberikan oleh bank"></td>
                     </tr>
                     <tr>
                         <td>&nbsp</td>
                         <td>&nbsp</td>
-                        <td><input type="submit" value="Lihat" title="Tombol Lihat Jalur terpendek"></td>
+                        <td><input type="submit" value="Konfirmasi" title="Tombol konfirmasi Pembayaran"></td>
                     </tr>
                 </table>
-                <div>
-                    <h3 align="center">
-                        <%
-                            String kode = request.getParameter("kode_booking");
-                            Pemesanan p = new Pemesanan();
-                            String a = p.lihatGate(kode);
-                            if (!a.isEmpty() && !a.equals("belum")) {
-                                out.print("Kode booking anda adalah " + kode + ". Anda dapat masuk melalui Gate " + a);
-                            } else if (a.equals("belum")) {
-                                out.print("Maaf Anda Belum melakukan konfirmasi pembayaran !!!");
-                            } else {
-                                out.print("Masukkan KODE BOOKING dengan benar !!!");
-                            }
-                        %>
-                    </h3>
-                </div>
+                <h3 align="center">
+                    <%
+                        String kodebayar = request.getParameter("kode_pembayaran");
+                        String kodebooking = request.getParameter("kode_booking");
+                        Pemesanan p = new Pemesanan();
+                        if (kodebayar == null) {
+                    %>Isi kode booking dan kode bayar dengan benar<%
+                    } else if (p.konfirmasiBayar(kodebayar, kodebooking) == false) {
+                    %>Maaf kode booking atau kode bayar anda tidak tepat mohon masukkan dengan benar
+                    <%
+                    } else if (p.konfirmasiBayar(kodebayar, kodebooking) == true) {
+                    %>Andah Telah berhasil melakukan konfirmasi pembayaran<%
+                        }
+                    %>
+                </h3>
             </form>
         </div>
     </body>

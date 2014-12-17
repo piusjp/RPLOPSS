@@ -137,6 +137,7 @@
                 <li ><a href='formPesanTiket.jsp'><span title="Halaman Pesan Tiket">Pesan Tiket</span></a></li>
                 <li><a href='#'><span title="Halaman Help">Help</span></a></li>
                 <li ><a href="LihatJalurTerpendek.jsp"><span title="halaman lihat jalur terpendek">Lihat Jalur Terpendek</span></a></li>
+                <li><a href="konfirmasiPembayaran.jsp"><span title="halaman konfirmasi Pembayaran">Konfirmasi</span></a></li>
                 <li class='last'><a <%
                     if (session.getAttribute("username") != null) {
                         %>href='formOp.jsp'>
